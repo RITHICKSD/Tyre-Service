@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | TireGlide Mobile Service</title>
+    <!-- Branded Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0f19'/><circle cx='50' cy='50' r='25' fill='none' stroke='%232563eb' stroke-width='8'/><circle cx='50' cy='50' r='10' fill='%23f59e0b'/></svg>">
+    <meta name="description" content="Log in to your TireGlide driver or fleet portal.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Synchronous check to prevent theme & direction flashing
+        const savedTheme = localStorage.getItem('tireglide_theme') || 'light';
+        const savedDir = localStorage.getItem('tireglide_dir') || 'ltr';
+        document.documentElement.classList.add(savedTheme + '-theme');
+        document.documentElement.setAttribute('dir', savedDir);
+    </script>
+</head>
+<body class="light-theme">
+    <script>
+        // Apply theme to body
+        document.body.className = savedTheme + '-theme';
+    </script>
+
+    <div class="auth-view">
+        <div class="auth-controls">
+            <button class="theme-toggle" id="login-theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+                <i class="fa-solid fa-moon moon-icon"></i>
+                <i class="fa-solid fa-sun sun-icon"></i>
+            </button>
+            <button class="dir-toggle-container" id="login-dir-toggle-btn" aria-label="Toggle Layout Direction">
+                LTR
+            </button>
+        </div>
+        <div class="auth-page-wrapper">
+            <div class="auth-container glass">
+                <div class="auth-logo-wrapper">
+                    <a href="index.html" class="logo-container" style="justify-content: center; margin-bottom: 24px; text-decoration: none;">
+                        <div class="logo-icon-wrapper">
+                            <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                            <i class="fa-solid fa-gear spinning-gear"></i>
+                        </div>
+                        <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+                    </a>
+                </div>
+                <div class="auth-header">
+                    <h2>Welcome Back</h2>
+                    <p>Access your driver or fleet portal</p>
+                </div>
+                <form id="standalone-login-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="standalone-login-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                        <input type="email" id="standalone-login-email" class="form-input" required placeholder="john.doe@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="standalone-login-password"><i class="fa-solid fa-lock"></i> Password</label>
+                        <input type="password" id="standalone-login-password" class="form-input" required placeholder="••••••••">
+                    </div>
+                    <div class="form-group">
+                        <div class="credential-tip">Demo Driver: <strong>user@test.com</strong> / <strong>user123</strong></div>
+                        <div class="credential-tip" style="margin-top: 6px;">Demo Admin: <strong>admin@test.com</strong> / <strong>admin123</strong></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login to Dashboard</button>
+                </form>
+                <div id="standalone-login-feedback" class="login-feedback-msg hidden"></div>
+                
+                <div class="auth-divider">
+                    <span>OR</span>
+                </div>
+                
+                <div class="social-login-group">
+                    <button class="btn btn-social google-btn" type="button" onclick="handleSocial('Google')">
+                        <i class="fa-brands fa-google"></i> Continue with Google
+                    </button>
+                    <button class="btn btn-social facebook-btn" type="button" onclick="handleSocial('Facebook')">
+                        <i class="fa-brands fa-facebook-f"></i> Continue with Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-footer-text">
+                    Don't have an account? <a href="register.html" id="go-to-register-btn" class="auth-switch-link">Just sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Localized scripts for standalone auth
+        const themeBtn = document.getElementById('login-theme-toggle-btn');
+        const dirBtn = document.getElementById('login-dir-toggle-btn');
+
+        // Initial setup for button text
+        if (dirBtn) dirBtn.textContent = savedDir.toUpperCase();
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('tireglide_theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('tireglide_theme', newTheme);
+            document.documentElement.className = newTheme + '-theme';
+            document.body.className = newTheme + '-theme';
+        });
+
+        dirBtn.addEventListener('click', () => {
+            const currentDir = localStorage.getItem('tireglide_dir') || 'ltr';
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            localStorage.setItem('tireglide_dir', newDir);
+            document.documentElement.setAttribute('dir', newDir);
+            dirBtn.textContent = newDir.toUpperCase();
+        });
+
+        function handleSocial(platform) {
+            const feedback = document.getElementById('standalone-login-feedback');
+            feedback.className = 'login-feedback-msg success';
+            feedback.textContent = `Connecting to ${platform} authentication...`;
+            feedback.classList.remove('hidden');
+            setTimeout(() => {
+                const mockUser = {
+                    role: 'user',
+                    name: 'John Doe',
+                    email: 'john.doe@gmail.com'
+                };
+                localStorage.setItem('tireglide_logged_in_user', JSON.stringify(mockUser));
+                window.location.href = 'index.html?view=user-dashboard-view';
+            }, 1000);
+        }
+
+        const loginForm = document.getElementById('standalone-login-form');
+        const loginFeedback = document.getElementById('standalone-login-feedback');
+
+        if (loginForm && loginFeedback) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('standalone-login-email').value.trim();
+                const pass = document.getElementById('standalone-login-password').value.trim();
+                loginFeedback.className = 'login-feedback-msg ';
+                
+                if (email === 'user@test.com' && pass === 'user123') {
+                    loginFeedback.classList.add('success');
+                    loginFeedback.textContent = 'Login Successful! Accessing Portal...';
+                    loginFeedback.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        const mockUser = {
+                            role: 'user',
+                            name: 'John Doe',
+                            email: 'user@test.com'
+                        };
+                        localStorage.setItem('tireglide_logged_in_user', JSON.stringify(mockUser));
+                        window.location.href = 'index.html?view=user-dashboard-view';
+                    }, 1000);
+                } else if (email === 'admin@test.com' && pass === 'admin123') {
+                    loginFeedback.classList.add('success');
+                    loginFeedback.textContent = 'Welcome Admin! Connecting Dispatch Console...';
+                    loginFeedback.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        const mockUser = {
+                            role: 'admin',
+                            name: 'Fleet Controller',
+                            email: 'admin@test.com'
+                        };
+                        localStorage.setItem('tireglide_logged_in_user', JSON.stringify(mockUser));
+                        window.location.href = 'index.html?view=admin-dashboard-view';
+                    }, 1000);
+                } else {
+                    loginFeedback.classList.add('error');
+                    loginFeedback.textContent = 'Invalid credentials. Please use the demo credentials shown below.';
+                    loginFeedback.classList.remove('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

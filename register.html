@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | TireGlide Mobile Service</title>
+    <!-- Branded Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0f19'/><circle cx='50' cy='50' r='25' fill='none' stroke='%232563eb' stroke-width='8'/><circle cx='50' cy='50' r='10' fill='%23f59e0b'/></svg>">
+    <meta name="description" content="Create your TireGlide account.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Synchronous check to prevent theme & direction flashing
+        const savedTheme = localStorage.getItem('tireglide_theme') || 'light';
+        const savedDir = localStorage.getItem('tireglide_dir') || 'ltr';
+        document.documentElement.classList.add(savedTheme + '-theme');
+        document.documentElement.setAttribute('dir', savedDir);
+    </script>
+</head>
+<body class="light-theme">
+    <script>
+        // Apply theme to body
+        document.body.className = savedTheme + '-theme';
+    </script>
+
+    <div class="auth-view">
+        <div class="auth-controls">
+            <button class="theme-toggle" id="register-theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+                <i class="fa-solid fa-moon moon-icon"></i>
+                <i class="fa-solid fa-sun sun-icon"></i>
+            </button>
+            <button class="dir-toggle-container" id="register-dir-toggle-btn" aria-label="Toggle Layout Direction">
+                LTR
+            </button>
+        </div>
+        <div class="auth-page-wrapper">
+            <div class="auth-container glass">
+                <div class="auth-logo-wrapper">
+                    <a href="index.html" class="logo-container" style="justify-content: center; margin-bottom: 24px; text-decoration: none;">
+                        <div class="logo-icon-wrapper">
+                            <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                            <i class="fa-solid fa-gear spinning-gear"></i>
+                        </div>
+                        <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+                    </a>
+                </div>
+                <div class="auth-header">
+                    <h2>Create Account</h2>
+                    <p>Get access to mobile scheduling & diagnostics</p>
+                </div>
+                <form id="standalone-register-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="register-name"><i class="fa-solid fa-user"></i> Full Name</label>
+                        <input type="text" id="register-name" class="form-input" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                        <input type="email" id="register-email" class="form-input" required placeholder="john.doe@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password"><i class="fa-solid fa-lock"></i> Password</label>
+                        <input type="password" id="register-password" class="form-input" required placeholder="••••••••">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password"><i class="fa-solid fa-lock"></i> Confirm Password</label>
+                        <input type="password" id="register-confirm-password" class="form-input" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up Now</button>
+                </form>
+                <div id="standalone-register-feedback" class="login-feedback-msg hidden"></div>
+                
+                <div class="auth-footer-text" style="margin-top: 24px;">
+                    Already have an account? <a href="login.html" id="go-to-login-btn" class="auth-switch-link">Log in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Localized scripts for standalone auth
+        const themeBtn = document.getElementById('register-theme-toggle-btn');
+        const dirBtn = document.getElementById('register-dir-toggle-btn');
+
+        // Initial setup for button text
+        if (dirBtn) dirBtn.textContent = savedDir.toUpperCase();
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('tireglide_theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('tireglide_theme', newTheme);
+            document.documentElement.className = newTheme + '-theme';
+            document.body.className = newTheme + '-theme';
+        });
+
+        dirBtn.addEventListener('click', () => {
+            const currentDir = localStorage.getItem('tireglide_dir') || 'ltr';
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            localStorage.setItem('tireglide_dir', newDir);
+            document.documentElement.setAttribute('dir', newDir);
+            dirBtn.textContent = newDir.toUpperCase();
+        });
+
+        const registerForm = document.getElementById('standalone-register-form');
+        const registerFeedback = document.getElementById('standalone-register-feedback');
+
+        if (registerForm && registerFeedback) {
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('register-name').value.trim();
+                const email = document.getElementById('register-email').value.trim();
+                const pass = document.getElementById('register-password').value.trim();
+                const confirmPass = document.getElementById('register-confirm-password').value.trim();
+                
+                registerFeedback.className = 'login-feedback-msg ';
+                
+                if (pass !== confirmPass) {
+                    registerFeedback.classList.add('error');
+                    registerFeedback.textContent = 'Passwords do not match.';
+                    registerFeedback.classList.remove('hidden');
+                    return;
+                }
+                
+                registerFeedback.classList.add('success');
+                registerFeedback.textContent = 'Account Created! Accessing Portal...';
+                registerFeedback.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    const mockUser = {
+                        role: 'user',
+                        name: name,
+                        email: email
+                    };
+                    localStorage.setItem('tireglide_logged_in_user', JSON.stringify(mockUser));
+                    window.location.href = 'index.html?view=user-dashboard-view';
+                }, 1200);
+            });
+        }
+    </script>
+</body>
+</html>

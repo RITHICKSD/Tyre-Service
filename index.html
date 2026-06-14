@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TireGlide | Mobile Tire Rotation, Balancing & Safety Service</title>
+    <!-- Branded Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0f19'/><circle cx='50' cy='50' r='25' fill='none' stroke='%232563eb' stroke-width='8'/><circle cx='50' cy='50' r='10' fill='%23f59e0b'/></svg>">
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Schedule mobile tire rotation, computerized balancing, and safety inspections directly to your driveway. Track service vehicles, review tread depth reports, and manage your vehicle maintenance.">
+    <!-- Google Fonts: Outfit for sleek typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet Link -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme">
+    <!-- Top Progress Bar for View Transitions -->
+    <div id="transition-bar" class="transition-bar"></div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <div class="header-container">
+            <!-- Left: Logo -->
+            <a href="#" class="logo-container" id="logo-btn" aria-label="TireGlide Home">
+                <div class="logo-icon-wrapper">
+                    <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                    <i class="fa-solid fa-gear spinning-gear"></i>
+                </div>
+                <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+            </a>
+
+            <!-- Mobile Hamburger Menu Button -->
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Center: Options Dropdowns & Links -->
+            <nav class="center-nav" id="main-nav">
+                <ul class="nav-list">
+                    <!-- Home Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="home-dropdown-btn">
+                            <span data-i18n="nav.home">Home</span> <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item active-view-trigger" data-target="home1-view" data-i18n="nav.home1">Home 1</a></li>
+                            <li><a href="#" class="dropdown-item active-view-trigger" data-target="home2-view" data-i18n="nav.home2">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <!-- About -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active-view-trigger" data-target="about-view">
+                            <span data-i18n="nav.about">About</span>
+                        </a>
+                    </li>
+                    <!-- Services -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active-view-trigger" data-target="services-view">
+                            <span data-i18n="nav.services">Services</span>
+                        </a>
+                    </li>
+                    <!-- Contact -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active-view-trigger" data-target="contact-view">
+                            <span data-i18n="nav.contact">Contact</span>
+                        </a>
+                    </li>
+                    <!-- Dashboard Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="dashboard-dropdown-btn">
+                            <span data-i18n="nav.dashboard">Dashboard</span> <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item active-view-trigger" data-target="user-dashboard-view" data-i18n="nav.user-dashboard">User Dashboard</a></li>
+                            <li><a href="#" class="dropdown-item active-view-trigger" data-target="admin-dashboard-view" data-i18n="nav.admin-dashboard">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                    <!-- Mobile-only Controls -->
+                    <li class="nav-item mobile-only-controls">
+                        <div class="mobile-controls-row">
+                            <!-- Theme Toggle Button -->
+                            <button class="theme-toggle" id="mobile-theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+                                <i class="fa-solid fa-moon moon-icon"></i>
+                                <i class="fa-solid fa-sun sun-icon"></i>
+                            </button>
+                            <!-- LTR/RTL Toggle -->
+                            <button class="dir-toggle-container" id="mobile-dir-toggle-btn" aria-label="Toggle Layout Direction">
+                                LTR
+                            </button>
+                            <!-- Login Button -->
+                            <a href="login.html" class="login-btn mobile-login-btn" id="mobile-login-modal-btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-user-lock"></i> <span data-i18n="header.login">Login</span>
+                            </a>
+                            <!-- Logged In User Indicator (Hidden by default) -->
+                            <div class="user-profile-indicator hidden" id="mobile-user-indicator">
+                                <div class="avatar-circle">
+                                    <span id="mobile-user-initials">JD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right: Dark Mode Toggle, LTR/RTL Toggle, Login -->
+            <div class="header-controls">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+                    <i class="fa-solid fa-moon moon-icon"></i>
+                    <i class="fa-solid fa-sun sun-icon"></i>
+                </button>
+
+                <!-- LTR/RTL Toggle -->
+                <button class="dir-toggle-container" id="dir-toggle-btn" aria-label="Toggle Layout Direction">
+                    LTR
+                </button>
+
+                <!-- Login Button -->
+                <a href="login.html" class="login-btn" id="login-modal-btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-user-lock"></i> <span data-i18n="header.login">Login</span>
+                </a>
+
+                <!-- Logged In User Indicator (Hidden by default) -->
+                <div class="user-profile-indicator hidden" id="user-indicator">
+                    <div class="avatar-circle">
+                        <span id="user-initials">JD</span>
+                    </div>
+                    <button class="logout-btn-header" id="logout-btn" title="Logout">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN APP CONTENT -->
+    <main class="main-content">
+
+        <!-- ==================== VIEW 1: HOME 1 (DEFAULT) ==================== -->
+        <section id="home1-view" class="app-view active">
+            <!-- Hero Section -->
+            <div class="hero-section hero-home1">
+                <div class="hero-content">
+                    <div class="safety-badge">
+                        <i class="fa-solid fa-shield-halved"></i> <span data-i18n="home1.badge">Safety-First Mobile Tire Care</span>
+                    </div>
+                    <h1 data-i18n="home1.title">Tire Shop Quality, <br><span class="gradient-text">Brought to Your Driveway</span></h1>
+                    <p data-i18n="home1.subtitle">Don't waste hours at a shop. Our mobile service vans deliver precision tire rotation, computerized balancing, and state-of-the-art tread scanner reports directly to your home or office.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary active-view-trigger" data-target="user-dashboard-view">
+                            <i class="fa-solid fa-calendar-check"></i> <span data-i18n="home1.cta-schedule">Schedule Mobile Service</span>
+                        </button>
+                        <a href="#home1-estimator" class="btn btn-secondary">
+                            <i class="fa-solid fa-calculator"></i> <span data-i18n="home1.cta-estimate">Get Price Estimate</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h3>4.9<i class="fa-solid fa-star text-amber"></i></h3>
+                            <p data-i18n="home1.stat1">Google Rating</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>20+ Min</h3>
+                            <p data-i18n="home1.stat2">Average Save Time</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>100%</h3>
+                            <p data-i18n="home1.stat3">Certified Technicians</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-graphic">
+                    <div class="floating-card glass card-top">
+                        <i class="fa-solid fa-truck-fast text-blue"></i>
+                        <div>
+                            <h4>Van #3 Dispatched</h4>
+                            <p>En route to your location (ETA 12m)</p>
+                        </div>
+                    </div>
+                    <div class="floating-card glass card-bottom">
+                        <div class="tread-indicator-mini green">
+                            <div class="tread-percent">82%</div>
+                            <span>Tread Left</span>
+                        </div>
+                        <div>
+                            <h4>Tread Health: Excellent</h4>
+                            <p>Front Left: 8/32" | Front Right: 8/32"</p>
+                        </div>
+                    </div>
+                    <!-- Vector Graphic illustrating Mobile Tire Service -->
+                    <div class="illustration-container">
+                        <svg viewBox="0 0 500 400" class="hero-svg">
+                            <defs>
+                                <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#2563eb" />
+                                    <stop offset="100%" stop-color="#1d4ed8" />
+                                </linearGradient>
+                                <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#f59e0b" />
+                                    <stop offset="100%" stop-color="#d97706" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Background Circles -->
+                            <circle cx="250" cy="200" r="150" fill="currentColor" class="svg-bg-circle" opacity="0.05" />
+                            <circle cx="100" cy="300" r="40" fill="url(#blueGrad)" opacity="0.1" />
+                            <!-- Simulated Van -->
+                            <rect x="180" y="160" width="200" height="110" rx="15" fill="url(#blueGrad)" />
+                            <rect x="330" y="180" width="50" height="50" rx="5" fill="#f8fafc" opacity="0.9" />
+                            <circle cx="230" cy="280" r="25" fill="#0f172a" />
+                            <circle cx="230" cy="280" r="10" fill="#cbd5e1" />
+                            <circle cx="330" cy="280" r="25" fill="#0f172a" />
+                            <circle cx="330" cy="280" r="10" fill="#cbd5e1" />
+                            <!-- Tread lines details -->
+                            <path d="M 230 160 L 230 200 M 250 160 L 250 200" stroke="#f8fafc" stroke-width="4" opacity="0.3"/>
+                            <!-- Logo text in van -->
+                            <text x="200" y="225" font-family="'Outfit', sans-serif" font-weight="bold" fill="#f8fafc" font-size="18">TireGlide</text>
+                            <!-- Jack lift -->
+                            <path d="M 100 270 L 150 220 L 170 270" stroke="url(#amberGrad)" stroke-width="8" stroke-linecap="round" fill="none"/>
+                            <!-- Balanced Tire -->
+                            <circle cx="100" cy="220" r="35" fill="none" stroke="#0f172a" stroke-width="12" />
+                            <circle cx="100" cy="220" r="15" fill="url(#amberGrad)" />
+                            <line x1="100" y1="185" x2="100" y2="255" stroke="#f8fafc" stroke-width="3"/>
+                            <line x1="65" y1="220" x2="135" y2="220" stroke="#f8fafc" stroke-width="3"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Core Features (Grid & Image) -->
+            <section class="section features-section">
+                <div class="section-header">
+                    <span class="sub-title">Why TireGlide?</span>
+                    <h2>Uncompromising Safety, Ultimate Convenience</h2>
+                    <p>We provide a premium, dealership-grade mobile tire workshop that operates directly at your location.</p>
+                </div>
+                <div class="grid-2col features-layout-wrapper">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="icon-box blue">
+                                <i class="fa-solid fa-house-chimney"></i>
+                            </div>
+                            <h3>At-Home / At-Work Convenience</h3>
+                            <p>No more sitting in smelly waiting rooms. We perform all rotations, balancing, and resets in your driveway or parking space while you continue with your day.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="icon-box amber">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <h3>Computerized Road balancing</h3>
+                            <p>Every mobile tire rotation is backed by our specialized on-board dynamic balancing rig, ensuring vibrations are eliminated for a smoother ride.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="icon-box green">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <h3>Digital Laser Tread Analysis</h3>
+                            <p>We perform full laser scans on all 4 tires, sending an interactive report directly to your dashboard detailing safety thresholds and wear indicators.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="icon-box red">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <h3>Warranty Integration</h3>
+                            <p>Every service is logged in your account, ensuring your tire manufacturer warranties remain valid. We provide certified digital proof of service.</p>
+                        </div>
+                    </div>
+                    <div class="features-featured-image-holder">
+                        <img class="section-featured-image" src="m1.jpg" alt="TireGlide technician performing safe torque balance check">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Interactive Price Estimator -->
+            <section class="section estimator-section" id="home1-estimator">
+                <div class="estimator-container">
+                    <div class="estimator-info">
+                        <span class="sub-title">Cost Estimator</span>
+                        <h2>Transparent Pricing, No Hidden Fees</h2>
+                        <p>Select your vehicle category and needed services to receive an instant, accurate estimate. Prices include dispatch, tools, technician service, and disposal fees (if replacement is chosen).</p>
+                        <div class="guarantee-box">
+                            <i class="fa-solid fa-circle-check text-green"></i>
+                            <div>
+                                <h4>Price Match Guarantee</h4>
+                                <p>We match any local brick-and-mortar shop's advertised pricing for standard rotation and balance.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="estimator-card glass">
+                        <h3>Service Cost Calculator</h3>
+                        <div class="form-group">
+                            <label for="est-vehicle"><i class="fa-solid fa-car"></i> Vehicle Type</label>
+                            <select id="est-vehicle" class="form-select">
+                                <option value="sedan" data-multiplier="1.0">Sedan / Hatchback</option>
+                                <option value="suv" data-multiplier="1.15">SUV / Crossover (+15%)</option>
+                                <option value="truck" data-multiplier="1.3">Light Truck / Van (+30%)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="est-service"><i class="fa-solid fa-gears"></i> Select Service</label>
+                            <select id="est-service" class="form-select">
+                                <option value="rotation" data-price="45">Standard Tire Rotation ($45)</option>
+                                <option value="balancing" data-price="60">On-Site Dynamic Wheel Balancing ($60)</option>
+                                <option value="rot_bal" data-price="85" selected>Rotation & Computerized Balance ($85)</option>
+                                <option value="seasonal" data-price="120">Seasonal Wheel Swap ($120)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="est-wheel-size"><i class="fa-solid fa-circle-notch"></i> Wheel / Rim Size</label>
+                            <select id="est-wheel-size" class="form-select">
+                                <option value="small" data-addon="0">14" - 17" Wheels (Included)</option>
+                                <option value="medium" data-addon="15">18" - 20" Wheels (+$15)</option>
+                                <option value="large" data-addon="30">21"+ Specialty Wheels (+$30)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="price-breakdown">
+                            <div class="price-row">
+                                <span>Base Service:</span>
+                                <span id="est-base-price">$85.00</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Vehicle Adjustment:</span>
+                                <span id="est-vehicle-adjust">$0.00</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Wheel Size Addon:</span>
+                                <span id="est-addon-price">$0.00</span>
+                            </div>
+                            <div class="price-divider"></div>
+                            <div class="price-row total-row">
+                                <span>Estimated Total:</span>
+                                <span id="est-total-price" class="text-blue">$85.00</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block active-view-trigger" data-target="user-dashboard-view">
+                            <i class="fa-solid fa-calendar-check"></i> Book This Service
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Tread Depth Scanner Info (Visual Gauge) -->
+            <section class="section tread-scanner-section">
+                <div class="section-header">
+                    <span class="sub-title">Tire Health Check</span>
+                    <h2>Understanding Your Tread Depth</h2>
+                    <p>Tire safety depends heavily on tread depth. Drag the slider below to see how tread wear affects braking distance and hydroplane risks.</p>
+                </div>
+                <div class="tread-interactive-container">
+                    <div class="tread-gauge-card glass">
+                        <h3>Interactive Tread Depth Gauge</h3>
+                        <!-- Simulated Tire Profile Visual -->
+                        <div class="tread-visualizer">
+                            <div class="tire-outer-ring">
+                                <div class="tire-tread-ridges" id="tread-ridges-bar"></div>
+                            </div>
+                            <!-- Center depth indicator -->
+                            <div class="depth-readout">
+                                <div class="depth-num" id="depth-readout-num">8</div>
+                                <div class="depth-unit">/32"</div>
+                            </div>
+                        </div>
+
+                        <!-- Gauge Slider -->
+                        <div class="slider-container">
+                            <input type="range" min="1" max="10" value="8" class="tread-slider" id="tread-depth-slider">
+                            <div class="slider-labels">
+                                <span class="red-text">1/32"</span>
+                                <span class="amber-text">4/32"</span>
+                                <span class="green-text">10/32"</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Status Alert Display -->
+                        <div class="tread-status-banner green-bg" id="tread-status-card">
+                            <i class="fa-solid fa-circle-check status-icon" id="tread-status-icon"></i>
+                            <div>
+                                <h4 id="tread-status-title">Safety Zone: Safe (8/32")</h4>
+                                <p id="tread-status-desc">Excellent wet grip, minimal braking distance. Perfect for highway driving.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tread-info-cards">
+                        <div class="info-card-item">
+                            <div class="bullet green"><i class="fa-solid fa-circle"></i></div>
+                            <div>
+                                <h4>6/32" to 10/32" — Optimal Safety</h4>
+                                <p>Excellent traction, low risk of hydroplaning, maximum braking efficiency.</p>
+                            </div>
+                        </div>
+                        <div class="info-card-item">
+                            <div class="bullet amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                            <div>
+                                <h4>3/32" to 5/32" — Warning Zone</h4>
+                                <p>Reduced traction in heavy rain. Schedule rotation immediately to ensure even wear patterns.</p>
+                            </div>
+                        </div>
+                        <div class="info-card-item">
+                            <div class="bullet red"><i class="fa-solid fa-skull-crossbones"></i></div>
+                            <div>
+                                <h4>2/32" or Less — Critical / Illegal</h4>
+                                <p>Legally bald. Wet stopping distance increased by over 120ft. Tires must be replaced immediately.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side-by-side Image showcase of tools -->
+                <div class="tread-tools-showcase" style="margin-top: 50px;">
+                    <div class="section-header">
+                        <span class="sub-title">Diagnostics</span>
+                        <h2>State-of-the-Art Precision Tools</h2>
+                        <p>We bring garage-quality machinery directly to your driveway, ensuring perfect alignments and safety compliance.</p>
+                    </div>
+                    <div class="grid-2col">
+                        <div class="tool-showcase-card glass">
+                            <img src="m12.webp" alt="On-Board Dynamic Wheel Balancer" style="width: 100%; height: 240px; object-fit: cover; border-bottom: 1px solid var(--border-color); display: block;">
+                            <div class="card-text-pad">
+                                <h4>On-Board Dynamic Wheel Balancer</h4>
+                                <p>Our Sprinters house micro-computerized road force simulators that check lateral and radial weight variations, restoring wheels to smooth rotation.</p>
+                            </div>
+                        </div>
+                        <div class="tool-showcase-card glass">
+                            <img src="m13.webp" alt="Digital Laser Tread Scanner" style="width: 100%; height: 240px; object-fit: cover; border-bottom: 1px solid var(--border-color); display: block;">
+                            <div class="card-text-pad">
+                                <h4>Digital Laser Tread Scanner</h4>
+                                <p>Handheld digital scanners measure depth profile across the tire width, catching alignment issues early by mapping asymmetric wear.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Service Coverage Checker & Live Tracker Promo -->
+            <section class="section coverage-section">
+                <div class="coverage-grid">
+                    <div class="coverage-graphic">
+                        <!-- Simulated Service Van Tracking Dashboard Screen -->
+                        <div class="dispatch-display glass">
+                            <div class="dispatch-header">
+                                <div class="dispatch-dot pulse"></div>
+                                <span>LIVE SERVICE DISPATCH MAP</span>
+                            </div>
+                            <div class="dispatch-map-mock">
+                                <div class="grid-overlay"></div>
+                                <!-- Mock Map Pins -->
+                                <div class="map-pin pin-van" style="top: 30%; left: 40%;" title="Service Van 1">
+                                    <i class="fa-solid fa-truck-fast"></i>
+                                </div>
+                                <div class="map-pin pin-van" style="top: 60%; left: 75%;" title="Service Van 2">
+                                    <i class="fa-solid fa-truck-fast"></i>
+                                </div>
+                                <div class="map-pin pin-customer" style="top: 45%; left: 55%;">
+                                    <i class="fa-solid fa-house-user"></i>
+                                </div>
+                                <svg class="routing-line" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                    <path d="M 40,30 Q 48,37 55,45" stroke="#2563eb" stroke-width="2" stroke-dasharray="4" fill="none" class="dash-path"/>
+                                </svg>
+                            </div>
+                            <div class="dispatch-footer">
+                                <div><strong>Van #2:</strong> Dynamic Balancing in progress</div>
+                                <div><strong>Van #1:</strong> En route to ZIP 90210 (ETA 14m)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coverage-info">
+                        <span class="sub-title">Immediate Availability</span>
+                        <h2>Real-Time Mobile Dispatch</h2>
+                        <p>We operate a fleet of customized mobile mechanical units. Enter your location below to check scheduling slots available today in your neighbourhood.</p>
+                        
+                        <!-- Zipcode Checker Widget -->
+                        <div class="zip-checker-container">
+                            <input type="text" id="zip-code-input" class="form-input" placeholder="Enter Zip Code (e.g. 90210, 10001)" maxlength="5">
+                            <button class="btn btn-primary" id="zip-check-btn">Check Availability</button>
+                        </div>
+                        <div id="zip-feedback" class="zip-feedback-msg hidden"></div>
+
+                        <div class="coverage-list-bullets">
+                            <div class="bullet-item">
+                                <i class="fa-solid fa-clock-rotate-left text-blue"></i>
+                                <span>Same-day scheduling for emergency lock/flat service</span>
+                            </div>
+                            <div class="bullet-item">
+                                <i class="fa-solid fa-map-location-dot text-blue"></i>
+                                <span>Real-time GPS tracking link sent via SMS upon dispatch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Testimonials & Safety Badges -->
+            <section class="section testimonials-section">
+                <div class="section-header">
+                    <span class="sub-title">Reviews</span>
+                    <h2>What Fellow Drivers Say</h2>
+                    <p>Safety and punctuality are our top priorities. Read testimonials from verified local drivers.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card glass">
+                        <div class="stars-row">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"TireGlide saved my Saturday. The technician arrived right at 10 AM, balanced my wheels on-site, and checked my tread. I never had to leave my house."</p>
+                        <div class="author-info">
+                            <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div>
+                                <h4>Marcus Vance</h4>
+                                <span>Tesla Model 3 Owner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card glass">
+                        <div class="stars-row">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Super detailed service. The tread report showing my front tires were wearing down faster helped me justify rotating them. Highly recommended service."</p>
+                        <div class="author-info">
+                            <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div>
+                                <h4>Sarah Jenkins</h4>
+                                <span>Toyota RAV4 Driver</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card glass">
+                        <div class="stars-row">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Our company fleet relies on TireGlide. They rotate tires for 8 delivery vans right in our lot after shifts. Incredible time saver and excellent safety audits."</p>
+                        <div class="author-info">
+                            <div class="author-avatar"><i class="fa-solid fa-user-group"></i></div>
+                            <div>
+                                <h4>David Chen</h4>
+                                <span>Logistics Fleet Director</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="safety-certifications-row">
+                    <div class="cert-item"><i class="fa-solid fa-circle-check"></i> OSHA Compliant</div>
+                    <div class="cert-item"><i class="fa-solid fa-gauge-high"></i> TIA Certified Techs</div>
+                    <div class="cert-item"><i class="fa-solid fa-scale-balanced"></i> Dynamic Balance Certified</div>
+                </div>
+            </section>
+
+            <!-- Home 1 Footer -->
+            <footer class="footer-section">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="logo-container" style="margin-bottom: 16px;">
+                            <div class="logo-icon-wrapper">
+                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                                <i class="fa-solid fa-gear spinning-gear"></i>
+                            </div>
+                            <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+                        </div>
+                        <p>High-precision mobile tire balancing, rotation, and safety inspections directly to your location.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Mobile Rotation</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Computerized Balancing</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">TPMS Recalibration</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Safety Inspection</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Quick Access</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="about-view">About Us</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="contact-view">Support / Help</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="user-dashboard-view">Customer Portal</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="admin-dashboard-view">Fleet Dispatcher</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 TireGlide Mobile Service. All Rights Reserved. Safety First.</p>
+                </div>
+            </footer>
+        </section>
+
+
+        <!-- ==================== VIEW 2: HOME 2 (CREATIVE) ==================== -->
+        <section id="home2-view" class="app-view">
+            <!-- Alternative Hero -->
+            <div class="hero-section hero-home2">
+                <div class="hero-content">
+                    <div class="creative-tag">PREMIUM MOBILE LABS</div>
+                    <h1 class="headline-large">We Bring the <br><span class="accent-glow">Tire Shop</span> To You</h1>
+                    <p>Experience the future of car maintenance. A fully equipped tire rotation, road force balancing, and digital analysis lab that comes right to your driveway.</p>
+                    <div class="cta-group-h2">
+                        <button class="btn btn-primary active-view-trigger" data-target="user-dashboard-view">
+                            <i class="fa-solid fa-calendar-days"></i> Schedule Appointment
+                        </button>
+                        <button class="btn btn-glass active-view-trigger" data-target="services-view">
+                            Explore Technical Specs
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-layout-grid">
+                    <div class="grid-card-h2 glass">
+                        <div class="metric">350k+</div>
+                        <p>Miles Serviced</p>
+                    </div>
+                    <div class="grid-card-h2 glass">
+                        <div class="metric"><i class="fa-solid fa-bolt"></i> 45m</div>
+                        <p>Standard Service Duration</p>
+                    </div>
+                    <div class="grid-card-h2 highlight-card">
+                        <h4>State-of-the-Art Vans</h4>
+                        <p>Equipped with Italian Corghi balancing systems.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- H2-Section 2: Interactive Timeline (How It Works) -->
+            <section class="section timeline-section">
+                <div class="section-header">
+                    <span class="sub-title">Smooth Process</span>
+                    <h2>How It Works in 4 Steps</h2>
+                    <p>Select timeline nodes to see how we deliver high-precision tire services at your doorstep.</p>
+                </div>
+                
+                <div class="timeline-interactive">
+                    <div class="timeline-nav">
+                        <button class="timeline-node active" data-step="1">
+                            <span class="step-num">1</span>
+                            <span class="step-title">Book Service</span>
+                        </button>
+                        <button class="timeline-node" data-step="2">
+                            <span class="step-num">2</span>
+                            <span class="step-title">Van Dispatched</span>
+                        </button>
+                        <button class="timeline-node" data-step="3">
+                            <span class="step-num">3</span>
+                            <span class="step-title">Laser Scanning</span>
+                        </button>
+                        <button class="timeline-node" data-step="4">
+                            <span class="step-num">4</span>
+                            <span class="step-title">Dynamic Balancer</span>
+                        </button>
+                    </div>
+
+                    <div class="timeline-display glass" id="timeline-display-card">
+                        <div class="timeline-content-card">
+                            <div class="timeline-icon-wrapper">
+                                <i class="fa-solid fa-laptop-code text-blue" id="timeline-icon"></i>
+                            </div>
+                            <div class="timeline-text-content">
+                                <h3 id="timeline-heading">Step 1: Simple Online Booking</h3>
+                                <p id="timeline-text">Select your services, input your vehicle details, and choose an exact time slot. Our system integrates directly with your vehicle data to prepare the technician.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- H2-Section 3: Fleet Van Showcase -->
+            <section class="section fleet-showcase">
+                <div class="showcase-container">
+                    <div class="showcase-content">
+                        <span class="sub-title">Our Workshop on Wheels</span>
+                        <h2>Inside the TireGlide Mobile Lab</h2>
+                        <p>We don't use hand tools or basic jacks. Each service van is a custom-built, temperature-controlled workshop housing industrial equipment designed for high-performance vehicles.</p>
+                        <ul class="specs-list">
+                            <li><i class="fa-solid fa-microchip text-amber"></i> <strong>Road Force Balancer:</strong> Onboard computerized balancer detects internal radial force variance.</li>
+                            <li><i class="fa-solid fa-compress text-amber"></i> <strong>Tire Mounting System:</strong> Specialized touchless mounting machine prevents alloy rim scratching.</li>
+                            <li><i class="fa-solid fa-scale-balanced text-amber"></i> <strong>Torque Calibration:</strong> Pneumatic systems backed by digital manual torque wrench validations.</li>
+                        </ul>
+                    </div>
+                    <div class="showcase-visual glass">
+                        <div class="van-mockup-frame">
+                            <div class="van-status-pill"><i class="fa-solid fa-check-circle"></i> SYSTEM: ONLINE</div>
+                            <i class="fa-solid fa-truck-moving van-massive-icon"></i>
+                            <div class="stats-row-van">
+                                <div><strong>Compressor:</strong> 150 PSI</div>
+                                <div><strong>Power:</strong> 10kW Generator</div>
+                                <div><strong>Payload:</strong> 3.5 Tons</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- H2-Section 4: Interactive Quick Booking Slot Checker -->
+            <section class="section scheduler-section">
+                <div class="section-header">
+                    <span class="sub-title">Quick Booking</span>
+                    <h2>Check Schedule Openings Today</h2>
+                    <p>Enter your contact details to review current service availability windows in your area.</p>
+                </div>
+                <div class="quick-scheduler-box glass">
+                    <form id="quick-scheduler-form" class="scheduler-grid-form" onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-user"></i> Full Name</label>
+                            <input type="text" class="form-input" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                            <input type="tel" class="form-input" required placeholder="(555) 000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-car-side"></i> Vehicle Make/Model</label>
+                            <input type="text" class="form-input" required placeholder="Tesla Model Y">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-calendar"></i> Preferred Date</label>
+                            <input type="date" class="form-input" required id="scheduler-date-input">
+                        </div>
+                        <div class="form-group full-width-field">
+                            <button class="btn btn-primary btn-block" type="submit" id="quick-sched-submit-btn">
+                                <i class="fa-solid fa-circle-question"></i> Check Selected Slots
+                            </button>
+                        </div>
+                    </form>
+                    <div id="quick-sched-feedback" class="sched-feedback hidden"></div>
+                </div>
+            </section>
+
+            <!-- H2-Section 5: Warranty Protection Program -->
+            <section class="section warranty-promo">
+                <div class="warranty-card-h2">
+                    <div class="warranty-badge-big">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>WARRANTY PROTECT</span>
+                    </div>
+                    <div class="warranty-details-text">
+                        <h2>Tire Manufacturer Warranty Maintenance</h2>
+                        <p>Most tire manufacturers (Michelin, Bridgestone, Continental) require certified rotation every 5,000 to 8,000 miles to keep treadwear warranties valid. TireGlide acts as your automated logger, storing certified maintenance records in your customer portal and proactively notifying you when rotations are due.</p>
+                        <div class="certs-badge-group">
+                            <span><i class="fa-solid fa-file-shield"></i> Digital Log Entry</span>
+                            <span><i class="fa-solid fa-check"></i> OEM Mileage Logs</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- H2-Section 6: Availability Heatmap Simulator -->
+            <section class="section heatmap-section">
+                <div class="section-header">
+                    <span class="sub-title">Live Presence</span>
+                    <h2>Active Service Footprint</h2>
+                    <p>Click on the quadrants below to view real-time fleet density, dispatch centers, and live active van locations.</p>
+                </div>
+                <div class="heatmap-map glass">
+                    <!-- Left: Quadrants & Telemetry Selector -->
+                    <div class="city-nodes-grid">
+                        <button class="footprint-quadrant-btn active" data-quadrant="north">
+                            <div class="quad-btn-content">
+                                <span class="city-name">North Quadrant</span>
+                                <span class="city-status"><span class="indicator green"></span> 4 Vans Active</span>
+                            </div>
+                            <div class="quad-btn-hover-info">Average Dispatch: 24 mins</div>
+                        </button>
+                        <button class="footprint-quadrant-btn" data-quadrant="metro">
+                            <div class="quad-btn-content">
+                                <span class="city-name">Metro Core</span>
+                                <span class="city-status"><span class="indicator green"></span> 6 Vans Active</span>
+                            </div>
+                            <div class="quad-btn-hover-info">Average Dispatch: 18 mins</div>
+                        </button>
+                        <button class="footprint-quadrant-btn" data-quadrant="east">
+                            <div class="quad-btn-content">
+                                <span class="city-name">East Suburbs</span>
+                                <span class="city-status"><span class="indicator amber"></span> 2 Vans Active</span>
+                            </div>
+                            <div class="quad-btn-hover-info">Average Dispatch: 32 mins</div>
+                        </button>
+                        <button class="footprint-quadrant-btn" data-quadrant="south">
+                            <div class="quad-btn-content">
+                                <span class="city-name">South Quadrant</span>
+                                <span class="city-status"><span class="indicator green"></span> 3 Vans Active</span>
+                            </div>
+                            <div class="quad-btn-hover-info">Average Dispatch: 28 mins</div>
+                        </button>
+
+                        <div class="footprint-action-box" style="margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                            <button id="sim-dispatch-call-btn" class="btn btn-primary btn-block btn-mini" style="font-weight: 700;">
+                                <i class="fa-solid fa-satellite-dish"></i> Test Dispatch Simulation
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Dynamic Tech Grid Map -->
+                    <div class="map-grid-visual" id="footprint-map-container" style="background-color: var(--bg-card); display: flex; flex-direction: column; justify-content: space-between; padding: 24px; position: relative;">
+                        <!-- Grid Overlay -->
+                        <div class="grid-overlay" style="opacity: 0.15;"></div>
+                        
+                        <!-- Header Bar inside Map -->
+                        <div class="map-top-bar" style="display: flex; justify-content: space-between; align-items: center; width: 100%; z-index: 5;">
+                            <span class="map-status-title" style="font-size: 11px; font-weight: 800; letter-spacing: 1px; color: var(--accent-color); text-transform: uppercase;">
+                                Live Status: <span id="quadrant-status-lbl">North Sector</span>
+                            </span>
+                            <span class="map-status-pill" style="background: rgba(16, 185, 129, 0.1); color: var(--success-color); font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">
+                                <i class="fa-solid fa-wifi pulse"></i> GPS ONLINE
+                            </span>
+                        </div>
+
+                        <!-- Central SVG or Interactive Target Coordinate Plotter -->
+                        <div class="map-coordinate-plotter" style="position: relative; flex-grow: 1; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 200px;">
+                            <div class="pulse-ring ring-1" style="width: 140px; height: 140px;"></div>
+                            <div class="pulse-ring ring-2" style="width: 140px; height: 140px;"></div>
+                            
+                            <!-- Dispatch Center Hub Pin -->
+                            <div class="map-hub-pin" style="position: absolute; z-index: 6; color: var(--primary-color); display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                                <i class="fa-solid fa-tower-broadcast" style="font-size: 28px; filter: drop-shadow(0 0 10px rgba(37,99,235,0.4));"></i>
+                                <span style="font-size: 9px; font-weight: 800; background: var(--bg-main); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-color);">HUB-01</span>
+                            </div>
+
+                            <!-- Dynamic Glowing Van Coordinates -->
+                            <div id="footprint-vans-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5;"></div>
+                        </div>
+
+                        <!-- Footer details inside Map -->
+                        <div class="map-bottom-bar" style="width: 100%; z-index: 5; background: rgba(11,15,25,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 12px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); display: flex; justify-content: space-around; font-size: 11px;">
+                            <div><strong style="color: var(--text-primary);" id="quadrant-fleet-size">4</strong> Vans Dispatching</div>
+                            <div style="border-left: 1px solid var(--border-color); padding-left: 16px;"><strong style="color: var(--text-primary);" id="quadrant-load">Low</strong> Load Status</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Home 2 Footer -->
+            <footer class="footer-section">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="logo-container" style="margin-bottom: 16px;">
+                            <div class="logo-icon-wrapper">
+                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                                <i class="fa-solid fa-gear spinning-gear"></i>
+                            </div>
+                            <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+                        </div>
+                        <p>High-precision mobile tire balancing, rotation, and safety inspections directly to your location.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Mobile Rotation</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Computerized Balancing</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">TPMS Recalibration</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Safety Inspection</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Quick Access</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="about-view">About Us</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="contact-view">Support / Help</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="user-dashboard-view">Customer Portal</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="admin-dashboard-view">Fleet Dispatcher</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 TireGlide Mobile Service. All Rights Reserved. Safety First.</p>
+                </div>
+            </footer>
+        </section>
+
+
+        <!-- ==================== VIEW 3: ABOUT ==================== -->
+        <section id="about-view" class="app-view">
+            <div class="view-header" style="background-image: url('m2.webp');">
+                <div class="view-header-container">
+                    <h1 class="gradient-text">Our Story & Safety Commitment</h1>
+                    <p>Taking high-end tire care out of the brick-and-mortar garage and putting it on wheels.</p>
+                </div>
+            </div>
+
+            <section class="section text-content-section">
+                <div class="grid-2col">
+                    <div class="story-text">
+                        <h2>Safety In Every Thread, Precision In Every Turn</h2>
+                        <p>TireGlide was founded in 2024 by a group of automotive engineers and software developers who realized that standard tire maintenance took too much customer time and was prone to mechanic error. By designing custom service vans equipped with digital diagnostic tread depths scanners, certified dynamic wheel balancing drums, and automated torque controls, we set a new benchmark for tire services.</p>
+                        <p>We operate with a single core principle: safety. Tires are the only contact point between your vehicle and the road. Proper rotation and balancing prevent uneven tread wear, increase stopping distances in wet conditions, and prevent high-speed blowouts.</p>
+                    </div>
+                    <div class="story-image-placeholder glass">
+                        <div class="story-icon-box">
+                            <i class="fa-solid fa-award award-huge-icon text-amber"></i>
+                            <h3>TIA Certified</h3>
+                            <p>Tire Industry Association Compliant Procedures</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section team-section">
+                <div class="section-header">
+                    <h2>Our Operations Team</h2>
+                    <p>Our staff consists of ASE and TIA-certified technicians with years of fleet servicing experience.</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card glass">
+                        <img class="team-avatar-img" src="male1.avif" alt="Robert Miller">
+                        <h3>Robert Miller</h3>
+                        <p class="role">Chief Operations Officer</p>
+                        <p>15 years in commercial fleet safety and automotive diagnostics.</p>
+                    </div>
+                    <div class="team-card glass">
+                        <img class="team-avatar-img" src="f1.avif" alt="Elena Rostova">
+                        <h3>Elena Rostova</h3>
+                        <p class="role">Lead Technical Installer</p>
+                        <p>Specializes in dynamic balancing calibration and custom road force testing.</p>
+                    </div>
+                    <div class="team-card glass">
+                        <img class="team-avatar-img" src="male2.avif" alt="Jameson Cole">
+                        <h3>Jameson Cole</h3>
+                        <p class="role">Safety Auditor</p>
+                        <p>Ensures every technician adheres to strict torque validation steps.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New About Section 3: Specialized Custom Fleet -->
+            <section class="section about-fleet-section">
+                <div class="grid-2col">
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m3.jpg" alt="TireGlide Custom Service Van">
+                    </div>
+                    <div class="story-text">
+                        <span class="sub-title">Mobile Workshop</span>
+                        <h2>Quality Equipment & Custom Vans</h2>
+                        <p>Our fleet consists of Mercedes-Benz Sprinter vans custom-retrofitted into micro-mechanical facilities. Unlike basic tow trucks or roadside assistance vehicles, each unit features computerized dynamic balancers, automated pneumatic lifts, and high-precision torque tools calibrated daily. This allows our ASE-certified technicians to perform complex balancing and service configurations right outside your door.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New About Section 4: 10-Point Safety Protocol -->
+            <section class="section safety-protocol-section">
+                <div class="grid-2col reverse-grid">
+                    <div class="story-text">
+                        <span class="sub-title">Inspection Checkpoints</span>
+                        <h2>Our 10-Point Safety Protocol</h2>
+                        <p>Safety is not just a marketing word at TireGlide. Every tire service requires the technician to complete our mandatory 10-point checklist before final handoff. This includes digital hub rust removal, TPMS sensor verification, bead lubricity audits, dual-stage torque wrench validation to exact factory specs, and dynamic road force simulation tests. You receive the completed report in your customer portal.</p>
+                    </div>
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m4.jpg" alt="TireGlide Safety Inspection Check">
+                    </div>
+                </div>
+            </section>
+
+            <!-- New About Section 5: Eco-Friendly Recycling -->
+            <section class="section eco-recycling-section">
+                <div class="grid-2col">
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m6.jpg" alt="Eco-Friendly Disposal & Recycling">
+                    </div>
+                    <div class="story-text">
+                        <span class="sub-title">Environmental Responsibility</span>
+                        <h2>Eco-Friendly Disposal & Recycling</h2>
+                        <p>We are dedicated to sustainable environmental practices. When we perform tire swaps or replace worn casings, we ensure the old tires are managed responsibly. Through partnerships with regional recycling centers, 100% of collected tire casings are processed into eco-friendly raw materials—such as safety crumb rubber for school playgrounds, asphalt rubber for green highways, and structural civil barriers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer-section">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="logo-container" style="margin-bottom: 16px;">
+                            <div class="logo-icon-wrapper">
+                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                                <i class="fa-solid fa-gear spinning-gear"></i>
+                            </div>
+                            <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+                        </div>
+                        <p>High-precision mobile tire balancing, rotation, and safety inspections directly to your location.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Mobile Rotation</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Computerized Balancing</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">TPMS Recalibration</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Safety Inspection</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Quick Access</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="about-view">About Us</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="contact-view">Support / Help</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="user-dashboard-view">Customer Portal</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="admin-dashboard-view">Fleet Dispatcher</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 TireGlide Mobile Service. All Rights Reserved. Safety First.</p>
+                </div>
+            </footer>
+        </section>
+
+
+        <!-- ==================== VIEW 4: SERVICES ==================== -->
+        <section id="services-view" class="app-view">
+            <div class="view-header" style="background-image: url('m5.jpg');">
+                <div class="view-header-container">
+                    <h1 class="gradient-text">Our Mobile Workshop Services</h1>
+                    <p>Explore specialized mobile tire service packages delivered directly to your driveway.</p>
+                </div>
+            </div>
+
+            <section class="section services-detail-section">
+                <div class="services-detail-grid">
+                    <div class="service-detail-card glass">
+                        <div class="icon-header blue-bg">
+                            <i class="fa-solid fa-rotate"></i>
+                            <h3>Mobile Tire Rotation</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="price-pill">$45.00</div>
+                            <p>Rear-to-front and cross-rotation patterns based on drivetrain (FWD, RWD, AWD) to ensure even tread wear. Recommended every 6,000 miles.</p>
+                            <ul>
+                                <li><i class="fa-solid fa-check text-blue"></i> Drivetrain-specific patterns</li>
+                                <li><i class="fa-solid fa-check text-blue"></i> Full tread depth scanning</li>
+                                <li><i class="fa-solid fa-check text-blue"></i> TPMS system reset</li>
+                                <li><i class="fa-solid fa-clock text-blue"></i> Approx 25 mins</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-detail-card glass">
+                        <div class="icon-header amber-bg">
+                            <i class="fa-solid fa-scale-unbalanced-stroke"></i>
+                            <h3>Computerized Dynamic Balancing</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="price-pill">$60.00</div>
+                            <p>On-board electronic balancing detects minor weight differences around the wheel. Prevents steering wheel vibrations and premature suspension wear.</p>
+                            <ul>
+                                <li><i class="fa-solid fa-check text-amber"></i> On-board micro-balancer</li>
+                                <li><i class="fa-solid fa-check text-amber"></i> Alloy-safe sticky weights</li>
+                                <li><i class="fa-solid fa-check text-amber"></i> Lug nut cleaning</li>
+                                <li><i class="fa-solid fa-clock text-amber"></i> Approx 35 mins</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-detail-card glass">
+                        <div class="icon-header green-bg">
+                            <i class="fa-solid fa-check-double"></i>
+                            <h3>Ultimate Rotation & Balancing</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="price-pill">$85.00</div>
+                            <p>Our most popular comprehensive safety package. Combines full cross-rotation with high-precision dynamic balancing on all four wheels.</p>
+                            <ul>
+                                <li><i class="fa-solid fa-check text-green"></i> Full Rotation & Balance</li>
+                                <li><i class="fa-solid fa-check text-green"></i> Certified digital safety report</li>
+                                <li><i class="fa-solid fa-check text-green"></i> Tire pressure calibration</li>
+                                <li><i class="fa-solid fa-clock text-green"></i> Approx 45 mins</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Services Section 2: Road Hazard Fleet Accounts -->
+            <section class="section service-section-add">
+                <div class="grid-2col">
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m6.jpg" alt="Fleet of service vehicles">
+                    </div>
+                    <div class="story-text">
+                        <span class="sub-title">Commercial Operations</span>
+                        <h2>Road Hazard Fleet Accounts</h2>
+                        <p>Minimize downtime for your delivery vehicles, sales team, and cargo trucks. TireGlide provides custom corporate fleet pricing and priority on-site routing scheduling. We service all light-commercial delivery vans, utility trucks, and passenger vehicles directly in your corporate lot or transit yard between shifts, complete with automated safety log compliance reports.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Services Section 3: TPMS Diagnostic Calibration -->
+            <section class="section service-section-add">
+                <div class="grid-2col reverse-grid">
+                    <div class="story-text">
+                        <span class="sub-title">Sensor Calibration</span>
+                        <h2>TPMS Diagnostic Calibration</h2>
+                        <p>Is your dashboard warning light blinking? A malfunctioning Tire Pressure Monitoring System (TPMS) poses a safety risk. Our technicians carry specialized wireless diagnostic programming tools. We check sensor battery states, reset receiver chips, and replace worn TPMS valves or program brand-new sensors on-site for both domestic and import vehicles.</p>
+                    </div>
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m7.jpg" alt="Vehicle dashboard TPMS status indicator">
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Services Section 4: Performance Wheel Balancing -->
+            <section class="section service-section-add">
+                <div class="grid-2col">
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m17.avif" alt="Performance Wheel Balancing">
+                    </div>
+                    <div class="story-text">
+                        <span class="sub-title">High Speed Calibration</span>
+                        <h2>Performance Wheel Balancing</h2>
+                        <p>For sports cars, high-end electric vehicles, and racing enthusiasts, standard balancing is not enough. Our mobile vans utilize road force dynamic balancing systems. By simulating high-speed road conditions inside our custom workshop unit, we find microscopic structural weight deviations, ensuring a completely smooth vibration-free steering response up to track speeds.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Services Section 5: Seasonal Tire Storage Solutions -->
+            <section class="section service-section-add">
+                <div class="grid-2col reverse-grid">
+                    <div class="story-text">
+                        <span class="sub-title">Locker Storage</span>
+                        <h2>Seasonal Tire Storage Solutions</h2>
+                        <p>Don't crowd your garage with offseason tire sets. When we perform your seasonal tire swap (winter to summer or vice versa), we can tag, clean, and transport your secondary tire set to our off-site climate-controlled warehouse. Your tires are stored away from ozone and moisture, and logged in your online profile for easy dispatch when seasonal swaps are needed.</p>
+                    </div>
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m19.webp" alt="Seasonal Tire Storage Solutions">
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Services Section 6: Suburban Emergency Flat Repair -->
+            <section class="section service-section-add">
+                <div class="grid-2col">
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m20.png" alt="Suburban Emergency Flat Repair">
+                    </div>
+                    <div class="story-text">
+                        <span class="sub-title">Roadside Safety</span>
+                        <h2>Suburban Emergency Flat Repair</h2>
+                        <p>If you pick up a nail, screw, or road debris in your tire, don't attempt to drive on it. Our dispatch center can route a mobile unit to your location. We dismount the tire, perform a full safety inspection, clean the puncture channel, and apply a high-quality patch-plug combination from the inside—the only repair method approved by the Tire Industry Association.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer-section">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="logo-container" style="margin-bottom: 16px;">
+                            <div class="logo-icon-wrapper">
+                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                                <i class="fa-solid fa-gear spinning-gear"></i>
+                            </div>
+                            <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+                        </div>
+                        <p>High-precision mobile tire balancing, rotation, and safety inspections directly to your location.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Mobile Rotation</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Computerized Balancing</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">TPMS Recalibration</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Safety Inspection</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Quick Access</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="about-view">About Us</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="contact-view">Support / Help</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="user-dashboard-view">Customer Portal</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="admin-dashboard-view">Fleet Dispatcher</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 TireGlide Mobile Service. All Rights Reserved. Safety First.</p>
+                </div>
+            </footer>
+        </section>
+
+
+        <!-- ==================== VIEW 5: CONTACT ==================== -->
+        <section id="contact-view" class="app-view">
+            <div class="view-header" style="background-image: url('m8.jpg');">
+                <div class="view-header-container">
+                    <h1 class="gradient-text">Contact Our Dispatch Center</h1>
+                    <p>Have questions about coverage, fleet accounts, or specialty rims? We are here to help.</p>
+                </div>
+            </div>
+
+            <section class="section contact-section">
+                <div class="contact-grid-layout">
+                    <div class="contact-info-panel glass">
+                        <h3>Direct Support</h3>
+                        <div class="info-row-contact">
+                            <i class="fa-solid fa-phone text-blue"></i>
+                            <div>
+                                <h4>Emergency Dispatch Hotline</h4>
+                                <p class="highlight-info">1-800-555-TIRE (8473)</p>
+                            </div>
+                        </div>
+                        <div class="info-row-contact">
+                            <i class="fa-solid fa-envelope text-blue"></i>
+                            <div>
+                                <h4>Email Operations</h4>
+                                <p>dispatch@tireglide-mobile.com</p>
+                            </div>
+                        </div>
+                        <div class="info-row-contact">
+                            <i class="fa-solid fa-clock text-blue"></i>
+                            <div>
+                                <h4>Operating Hours</h4>
+                                <p>Mon - Sun: 7:00 AM — 9:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-panel glass">
+                        <h3>Send a Message</h3>
+                        <form id="contact-us-form" onsubmit="event.preventDefault();">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" class="form-input" required placeholder="Jane Smith">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" class="form-input" required placeholder="jane.smith@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Message / Inquiries</label>
+                                <textarea class="form-textarea" rows="4" required placeholder="How can we assist you with your tire service?"></textarea>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit" id="contact-submit-btn">Send Message</button>
+                        </form>
+                        <div id="contact-feedback" class="feedback-box hidden"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Contact Section 2: Dispatch Service Maps & Coverage -->
+            <section class="section contact-section-add">
+                <div class="grid-2col">
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m15.jpg" alt="Dispatch Service Maps & Coverage">
+                    </div>
+                    <div class="story-text">
+                        <span class="sub-title">Service Areas</span>
+                        <h2>Dispatch Service Maps & Coverage</h2>
+                        <p>TireGlide operates multiple localized hubs across the region to ensure fast response times. Our primary coverage area spans all major suburban sectors within a 45-mile radius of the metropolitan area. Enter your ZIP code in our home scanner widget, or get in touch with our live dispatcher if you reside just outside the boundary to verify if custom dispatch units are available.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Contact Section 3: Corporate Headquarters -->
+            <section class="section contact-section-add">
+                <div class="grid-2col reverse-grid">
+                    <div class="story-text">
+                        <span class="sub-title">HQ Offices</span>
+                        <h2>Corporate Headquarters</h2>
+                        <p>Need to send physical paperwork, discuss fleet contracts, or arrange billing operations? You can reach our administrative office team. TireGlide HQ is located at: <strong>100 Enterprise Way, Suite 400, Metro City, NY 10001</strong>. Office lines are open Monday through Friday, 9:00 AM to 5:00 PM EST. Please note: we do not service consumer tires at this administrative location.</p>
+                    </div>
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m16.jpg" alt="Corporate Headquarters">
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Contact Section 4: Media & Press Inquiries -->
+            <section class="section contact-section-add">
+                <div class="grid-2col">
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m17.avif" alt="Media & Press Inquiries">
+                    </div>
+                    <div class="story-text">
+                        <span class="sub-title">Public Relations</span>
+                        <h2>Media & Press Inquiries</h2>
+                        <p>For all journalistic inquiries, interviews, corporate announcements, and branding media kit downloads, contact our public relations team. We regularly publish fleet telemetry studies and vehicle safety analysis. Reach out directly to <strong>press@tireglide-mobile.com</strong> to get in touch with our communications officer.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Contact Section 5: Career Opportunities -->
+            <section class="section contact-section-add">
+                <div class="grid-2col reverse-grid">
+                    <div class="story-text">
+                        <span class="sub-title">Join The Team</span>
+                        <h2>Career Opportunities</h2>
+                        <p>Do you have a passion for automotive precision and customer service? TireGlide is rapidly expanding our service zones. We are looking for TIA-certified mobile technicians, logistics dispatchers, and software operations developers. We offer competitive benefits, custom tooling packages, and safety-focused training programs. Apply online at <strong>careers@tireglide-mobile.com</strong>.</p>
+                    </div>
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m10.jpg" alt="Career Opportunities">
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer-section">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="logo-container" style="margin-bottom: 16px;">
+                            <div class="logo-icon-wrapper">
+                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                                <i class="fa-solid fa-gear spinning-gear"></i>
+                            </div>
+                            <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+                        </div>
+                        <p>High-precision mobile tire balancing, rotation, and safety inspections directly to your location.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Mobile Rotation</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Computerized Balancing</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">TPMS Recalibration</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="services-view">Safety Inspection</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Quick Access</h4>
+                        <ul>
+                            <li><a href="#" class="active-view-trigger" data-target="about-view">About Us</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="contact-view">Support / Help</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="user-dashboard-view">Customer Portal</a></li>
+                            <li><a href="#" class="active-view-trigger" data-target="admin-dashboard-view">Fleet Dispatcher</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 TireGlide Mobile Service. All Rights Reserved. Safety First.</p>
+                </div>
+            </footer>
+        </section>
+
+
+        <!-- ==================== VIEW 6: USER DASHBOARD ==================== -->
+        <section id="user-dashboard-view" class="app-view dashboard-view">
+            <div class="dashboard-layout">
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar">
+                    <div class="sidebar-header">
+                        <a href="#" class="logo-container active-view-trigger" data-target="home1-view" style="margin-bottom: 0;">
+                            <div class="logo-icon-wrapper">
+                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                                <i class="fa-solid fa-gear spinning-gear"></i>
+                            </div>
+                            <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+                        </a>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="menu-item active" data-panel="user-overview"><i class="fa-solid fa-gauge"></i> Overview</li>
+                        <li class="menu-item" data-panel="user-schedule"><i class="fa-solid fa-calendar-plus"></i> Schedule Service</li>
+                        <li class="menu-item" data-panel="user-tread"><i class="fa-solid fa-chart-simple"></i> Tread Depth Reports</li>
+                        <li class="menu-item" data-panel="user-track"><i class="fa-solid fa-route"></i> Track Service Van</li>
+                        <li class="menu-item" data-panel="user-history"><i class="fa-solid fa-clock-rotate-left"></i> Service History</li>
+                        <li class="menu-item" data-panel="user-warranty"><i class="fa-solid fa-file-shield"></i> Warranty Docs</li>
+                        <li class="menu-item sidebar-logout-btn" style="margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 16px; color: var(--danger-color);"><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+                    </ul>
+                </aside>
+
+                <!-- Panel Content Container -->
+                <div class="dashboard-panels-container">
+                    <!-- Dashboard controls (Theme & Dir toggles) -->
+                    <div class="dashboard-controls">
+                        <button class="theme-toggle" id="user-dashboard-theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+                            <i class="fa-solid fa-moon moon-icon"></i>
+                            <i class="fa-solid fa-sun sun-icon"></i>
+                        </button>
+                        <button class="dir-toggle-container" id="user-dashboard-dir-toggle-btn" aria-label="Toggle Layout Direction">
+                            LTR
+                        </button>
+                    </div>
+                    
+                    <!-- PANEL 1: OVERVIEW -->
+                    <div class="dashboard-panel active" id="user-overview">
+                        <div class="panel-header">
+                            <h2>Vehicle Safety Overview</h2>
+                            <p>Status report for: <strong class="text-blue" id="ov-vehicle-name">2023 Tesla Model Y</strong></p>
+                        </div>
+                        
+                        <div class="status-banner-grid">
+                            <div class="status-banner-card green">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div>
+                                    <h4>Tire Pressure (TPMS)</h4>
+                                    <p>All tires balanced at 42 PSI</p>
+                                </div>
+                            </div>
+                            <div class="status-banner-card amber">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                <div>
+                                    <h4>Tread wear Alert</h4>
+                                    <p>Rear Left tire depth is 4/32" (Caution)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overview-grid">
+                            <div class="overview-widget glass">
+                                <h3>Next Recommended Rotation</h3>
+                                <div class="widget-details">
+                                    <div class="huge-text text-blue">1,250 <span class="small-text">mi</span></div>
+                                    <p>Remaining before manufacturer warranty rotation validation limit.</p>
+                                    <button class="btn btn-secondary active-panel-trigger" data-panel="user-schedule">Book Now</button>
+                                </div>
+                            </div>
+                            
+                            <div class="overview-widget glass">
+                                <h3>Active Mobile Dispatch</h3>
+                                <div class="widget-details" id="overview-dispatch-widget">
+                                    <p class="neutral-text">No active service scheduled today.</p>
+                                    <button class="btn btn-primary active-panel-trigger" data-panel="user-schedule"><i class="fa-solid fa-plus"></i> Book Mobile Service</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User Dashboard Overview Charts -->
+                        <div class="dashboard-charts-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 24px;">
+                            <div class="chart-widget-admin glass">
+                                <h3>Tire Tread Depth Wear Trend (30 Days)</h3>
+                                <div class="svg-chart-container">
+                                    <svg class="admin-svg-chart" viewBox="0 0 500 200">
+                                        <defs>
+                                            <linearGradient id="treadGrad" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>
+                                                <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <!-- Grid lines -->
+                                        <line x1="50" y1="150" x2="480" y2="150" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="100" x2="480" y2="100" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="50" x2="480" y2="50" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <!-- Tread wear line starting at 10/32" (y=40) down to 6/32" (y=100) or similar -->
+                                        <path d="M 50,40 Q 150,55 250,70 T 480,100" fill="none" stroke="#10b981" stroke-width="4"/>
+                                        <path d="M 50,40 Q 150,55 250,70 T 480,100 L 480,150 L 50,150 Z" fill="url(#treadGrad)"/>
+                                        <circle cx="50" cy="40" r="6" fill="#10b981"/>
+                                        <circle cx="250" cy="70" r="6" fill="#10b981"/>
+                                        <circle cx="480" cy="100" r="6" fill="#10b981"/>
+                                        <text x="50" y="170" fill="var(--text-secondary)" font-size="11" font-weight="700">1 Month Ago</text>
+                                        <text x="235" y="170" fill="var(--text-secondary)" font-size="11" font-weight="700">2 Weeks Ago</text>
+                                        <text x="440" y="170" fill="var(--text-secondary)" font-size="11" font-weight="700">Today</text>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="chart-widget-admin glass">
+                                <h3>TPMS Pressure Stability History (PSI)</h3>
+                                <div class="svg-chart-container">
+                                    <svg class="admin-svg-chart" viewBox="0 0 500 200">
+                                        <!-- Grid lines -->
+                                        <line x1="50" y1="150" x2="480" y2="150" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="100" x2="480" y2="100" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="50" x2="480" y2="50" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <!-- 4 bars representing FL, FR, RL, RR PSI (Target 42 PSI, let's say all are around 41-42 PSI) -->
+                                        <rect x="90" y="45" width="40" height="105" rx="4" fill="var(--primary-color)"/>
+                                        <rect x="190" y="48" width="40" height="102" rx="4" fill="var(--primary-color)"/>
+                                        <rect x="290" y="55" width="40" height="95" rx="4" fill="var(--accent-color)"/>
+                                        <rect x="390" y="45" width="40" height="105" rx="4" fill="var(--primary-color)"/>
+                                        <!-- Labels -->
+                                        <text x="98" y="170" fill="var(--text-secondary)" font-size="12" font-weight="800">FL (42)</text>
+                                        <text x="198" y="170" fill="var(--text-secondary)" font-size="12" font-weight="800">FR (41)</text>
+                                        <text x="298" y="170" fill="var(--text-secondary)" font-size="12" font-weight="800">RL (39)</text>
+                                        <text x="398" y="170" fill="var(--text-secondary)" font-size="12" font-weight="800">RR (42)</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL 2: SCHEDULE SERVICE (WIZARD) -->
+                    <div class="dashboard-panel" id="user-schedule">
+                        <div class="panel-header">
+                            <h2>Schedule a Mobile Appointment</h2>
+                            <p>Complete the steps below to dispatch a mobile workshop van to your address.</p>
+                        </div>
+
+                        <div class="booking-wizard glass">
+                            <!-- Wizard Progress indicators -->
+                            <div class="wizard-header">
+                                <div class="wizard-step-indicator active" id="wiz-step-1">1. Drivetrain</div>
+                                <div class="wizard-step-indicator" id="wiz-step-2">2. Schedule</div>
+                                <div class="wizard-step-indicator" id="wiz-step-3">3. Review</div>
+                            </div>
+
+                            <form id="booking-wizard-form" onsubmit="event.preventDefault();">
+                                <!-- Step 1: Vehicle & Drivetrain -->
+                                <div class="wizard-content" id="step-1-content">
+                                    <h3>Step 1: Vehicle Details</h3>
+                                    <div class="form-group">
+                                        <label>Vehicle Make, Model & Year</label>
+                                        <input type="text" class="form-input" id="wiz-vehicle" required value="2023 Tesla Model Y">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Drivetrain Type (Crucial for rotation patterns)</label>
+                                        <select class="form-select" id="wiz-drivetrain">
+                                            <option value="awd">AWD - All Wheel Drive (Double Cross Rotation)</option>
+                                            <option value="fwd" selected>FWD - Front Wheel Drive (Forward Cross Rotation)</option>
+                                            <option value="rwd">RWD - Rear Wheel Drive (Rearward Cross Rotation)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Service Package</label>
+                                        <select class="form-select" id="wiz-package">
+                                            <option value="rotation">Mobile Tire Rotation ($45)</option>
+                                            <option value="rot_bal" selected>Rotation & Dynamic Balancing ($85)</option>
+                                            <option value="seasonal">Seasonal Wheel Swap ($120)</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="wiz-next-1">Next Step <i class="fa-solid fa-arrow-right"></i></button>
+                                </div>
+
+                                <!-- Step 2: Schedule & Address -->
+                                <div class="wizard-content hidden" id="step-2-content">
+                                    <h3>Step 2: Service Location & Date</h3>
+                                    <div class="form-group">
+                                        <label>Service Street Address</label>
+                                        <input type="text" class="form-input" id="wiz-address" required placeholder="123 Driveway Lane">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Zip Code</label>
+                                        <input type="text" class="form-input" id="wiz-zip" required placeholder="90210" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Preferred Date</label>
+                                        <input type="date" class="form-input" id="wiz-date" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Preferred Time Slot</label>
+                                        <select class="form-select" id="wiz-time">
+                                            <option value="morning">Morning (8:00 AM - 12:00 PM)</option>
+                                            <option value="afternoon" selected>Afternoon (12:00 PM - 4:00 PM)</option>
+                                            <option value="evening">Evening (4:00 PM - 8:00 PM)</option>
+                                        </select>
+                                    </div>
+                                    <div class="btn-group-wizard">
+                                        <button type="button" class="btn btn-secondary" id="wiz-prev-2"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                                        <button type="button" class="btn btn-primary" id="wiz-next-2">Next Step <i class="fa-solid fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Review & Dispatch -->
+                                <div class="wizard-content hidden" id="step-3-content">
+                                    <h3>Step 3: Review Dispatch Details</h3>
+                                    <div class="review-details-box">
+                                        <p><strong>Vehicle:</strong> <span id="rev-vehicle">Tesla Model Y</span></p>
+                                        <p><strong>Drivetrain:</strong> <span id="rev-drivetrain">FWD</span></p>
+                                        <p><strong>Service:</strong> <span id="rev-service">Rotation & Balance</span></p>
+                                        <p><strong>Address:</strong> <span id="rev-address">123 Driveway Lane, 90210</span></p>
+                                        <p><strong>Schedule Date:</strong> <span id="rev-date">Tomorrow</span></p>
+                                        <p><strong>Est Cost:</strong> <strong class="text-blue" id="rev-price">$85.00</strong></p>
+                                    </div>
+                                    <div class="btn-group-wizard">
+                                        <button type="button" class="btn btn-secondary" id="wiz-prev-3"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                                        <button type="submit" class="btn btn-primary" id="wiz-submit-btn"><i class="fa-solid fa-truck-fast"></i> Confirm & Dispatch Van</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="booking-wizard-feedback" class="wizard-feedback hidden"></div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL 3: TREAD DEPTH REPORTS -->
+                    <div class="dashboard-panel" id="user-tread">
+                        <div class="panel-header">
+                            <h2>Interactive Tread Depth Report</h2>
+                            <p>Review the exact wear profile of your tires scanned by our technician's laser tool.</p>
+                        </div>
+                        
+                        <div class="tread-report-layout glass">
+                            <!-- Visual Vehicle Grid -->
+                            <div class="tread-report-grid">
+                                <!-- Front Left -->
+                                <div class="tread-tire-card" data-tire="fl">
+                                    <h4>FRONT LEFT</h4>
+                                    <div class="tread-visual-indicator green">
+                                        <span class="depth-val" id="depth-fl">8</span>
+                                        <span class="depth-unit">/32"</span>
+                                    </div>
+                                    <p class="status-msg text-green">Good (82% Left)</p>
+                                    <button class="btn btn-mini adjust-tread-btn" data-tire="fl" data-current="8">Simulate Wear</button>
+                                </div>
+                                <!-- Front Right -->
+                                <div class="tread-tire-card" data-tire="fr">
+                                    <h4>FRONT RIGHT</h4>
+                                    <div class="tread-visual-indicator green">
+                                        <span class="depth-val" id="depth-fr">7</span>
+                                        <span class="depth-unit">/32"</span>
+                                    </div>
+                                    <p class="status-msg text-green">Good (70% Left)</p>
+                                    <button class="btn btn-mini adjust-tread-btn" data-tire="fr" data-current="7">Simulate Wear</button>
+                                </div>
+                                <!-- Rear Left -->
+                                <div class="tread-tire-card" data-tire="rl">
+                                    <h4>REAR LEFT</h4>
+                                    <div class="tread-visual-indicator amber">
+                                        <span class="depth-val" id="depth-rl">4</span>
+                                        <span class="depth-unit">/32"</span>
+                                    </div>
+                                    <p class="status-msg text-amber">Caution (38% Left)</p>
+                                    <button class="btn btn-mini adjust-tread-btn" data-tire="rl" data-current="4">Simulate Wear</button>
+                                </div>
+                                <!-- Rear Right -->
+                                <div class="tread-tire-card" data-tire="rr">
+                                    <h4>REAR RIGHT</h4>
+                                    <div class="tread-visual-indicator green">
+                                        <span class="depth-val" id="depth-rr">8</span>
+                                        <span class="depth-unit">/32"</span>
+                                    </div>
+                                    <p class="status-msg text-green">Good (82% Left)</p>
+                                    <button class="btn btn-mini adjust-tread-btn" data-tire="rr" data-current="8">Simulate Wear</button>
+                                </div>
+                            </div>
+
+                            <div class="tread-analysis-panel">
+                                <h3>Technician Safety Recommendation</h3>
+                                <div class="recommendation-box amber-border">
+                                    <i class="fa-solid fa-triangle-exclamation text-amber"></i>
+                                    <div>
+                                        <h4>Rotation Recommended Immediately</h4>
+                                        <p>Your Rear Left tire is showing accelerated wear (4/32"). Since this vehicle is FWD, rotating the rear tires to the front will help equalize the tread wear and extend the overall lifespan of the set.</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-block active-panel-trigger" data-panel="user-schedule">
+                                    <i class="fa-solid fa-rotate"></i> Schedule Rotation ($45)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL 4: TRACK SERVICE VAN -->
+                    <div class="dashboard-panel" id="user-track">
+                        <div class="panel-header">
+                            <h2>Live Dispatch Tracker</h2>
+                            <p>Monitor your dispatched mobile workshop in real-time.</p>
+                        </div>
+                        <div class="live-tracker-layout glass">
+                            <div class="tracker-sidebar-info">
+                                <div class="dispatch-status-chip en-route" id="tracking-status-chip">
+                                    <i class="fa-solid fa-truck-moving"></i> En Route
+                                </div>
+                                <div class="eta-box">
+                                    <span class="eta-title">ESTIMATED ARRIVAL</span>
+                                    <span class="eta-time" id="tracking-eta">12 mins</span>
+                                </div>
+                                <div class="driver-profile-mini">
+                                    <div class="avatar-driver"><i class="fa-solid fa-user-nut"></i></div>
+                                    <div>
+                                        <h4>Elena Rostova</h4>
+                                        <p>TIA Certified Tech | Van #2</p>
+                                    </div>
+                                </div>
+                                <div class="tracking-steps-log">
+                                    <div class="log-step completed">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span>Appointment Confirmed</span>
+                                    </div>
+                                    <div class="log-step active" id="log-step-route">
+                                        <i class="fa-solid fa-truck"></i>
+                                        <span>Technician En Route</span>
+                                    </div>
+                                    <div class="log-step" id="log-step-arrival">
+                                        <i class="fa-solid fa-hourglass-start"></i>
+                                        <span>On-site service in progress</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="map-container-live">
+                                <!-- Map visual simulation with a route line and moving van icon -->
+                                <div class="live-map-grid" id="live-map-grid">
+                                    <div class="map-grid-layer"></div>
+                                    <!-- Marker Pin 1: Customer Home -->
+                                    <div class="map-pin customer-marker" style="top: 20%; left: 80%;">
+                                        <i class="fa-solid fa-house-user"></i>
+                                        <span class="marker-label">Your Home</span>
+                                    </div>
+                                    <!-- Marker Pin 2: Moving Van -->
+                                    <div class="map-pin van-marker" id="live-moving-van" style="top: 80%; left: 15%;">
+                                        <i class="fa-solid fa-truck-fast"></i>
+                                        <span class="marker-label">Van #2</span>
+                                    </div>
+                                    <!-- Path line -->
+                                    <svg class="map-svg-path" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                        <path id="route-path-element" d="M 15,80 C 30,75 40,40 80,20" stroke="#2563eb" stroke-width="2" stroke-dasharray="3" fill="none"/>
+                                    </svg>
+                                </div>
+                                <div class="map-controls-row">
+                                    <button class="btn btn-mini" id="btn-restart-van-sim"><i class="fa-solid fa-arrow-rotate-left"></i> Restart Tracking Sim</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL 5: ROTATION HISTORY -->
+                    <div class="dashboard-panel" id="user-history">
+                        <div class="panel-header">
+                            <h2>Service & Maintenance Log</h2>
+                            <p>A history of all tire rotations and balancing operations performed on this account.</p>
+                        </div>
+                        <div class="history-table-container glass">
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Service Performed</th>
+                                        <th>Mileage</th>
+                                        <th>Technician</th>
+                                        <th>Status</th>
+                                        <th>Document</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mar 12, 2026</td>
+                                        <td>Standard Tire Rotation</td>
+                                        <td>18,450 mi</td>
+                                        <td>Elena Rostova</td>
+                                        <td><span class="status-badge success">Completed</span></td>
+                                        <td><a href="#" class="doc-link"><i class="fa-solid fa-file-pdf"></i> Receipt</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 05, 2025</td>
+                                        <td>Rotation & Dynamic Balancing</td>
+                                        <td>12,100 mi</td>
+                                        <td>Robert Miller</td>
+                                        <td><span class="status-badge success">Completed</span></td>
+                                        <td><a href="#" class="doc-link"><i class="fa-solid fa-file-pdf"></i> Receipt</a></td>
+                                    </tr>
+                                    <tr id="history-pending-row" class="hidden">
+                                        <td id="hist-date">Pending</td>
+                                        <td id="hist-service">Rotation & Dynamic Balancing</td>
+                                        <td id="hist-mileage">23,500 mi</td>
+                                        <td>Elena Rostova</td>
+                                        <td><span class="status-badge warning">Scheduled</span></td>
+                                        <td><span class="text-muted">Not Available</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- PANEL 6: WARRANTY DOCUMENTS -->
+                    <div class="dashboard-panel" id="user-warranty">
+                        <div class="panel-header">
+                            <h2>Warranty Locker</h2>
+                            <p>Access active road hazard warranties and tire alignment certificates.</p>
+                        </div>
+                        <div class="warranty-grid-docs">
+                            <div class="doc-card glass">
+                                <div class="doc-icon"><i class="fa-solid fa-file-shield text-blue"></i></div>
+                                <h3>Road Hazard Certificate</h3>
+                                <p>Covers replacement costs for tire damage due to potholes, nails, and road debris.</p>
+                                <div class="doc-meta">
+                                    <span>Tire: Michelin Pilot Sport 4</span>
+                                    <span>Expires: Jan 2028</span>
+                                </div>
+                                <button class="btn btn-secondary btn-block" onclick="alert('Downloading Road Hazard Certificate Mock PDF...');">
+                                    <i class="fa-solid fa-download"></i> Download PDF
+                                </button>
+                            </div>
+
+                            <div class="doc-card glass">
+                                <div class="doc-icon"><i class="fa-solid fa-rotate text-blue"></i></div>
+                                <h3>Tire Rotation Log Proof</h3>
+                                <p>Certified report validating that the required 6,000-mile rotations were done by a certified technician.</p>
+                                <div class="doc-meta">
+                                    <span>Status: Valid & Up-to-Date</span>
+                                    <span>Total Logs: 2 Entries</span>
+                                </div>
+                                <button class="btn btn-secondary btn-block" onclick="alert('Downloading Certified Rotation Log Mock PDF...');">
+                                    <i class="fa-solid fa-download"></i> Download Log
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== VIEW 7: ADMIN DASHBOARD ==================== -->
+        <section id="admin-dashboard-view" class="app-view dashboard-view">
+            <div class="dashboard-layout">
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar admin-sidebar-theme">
+                    <div class="sidebar-header">
+                        <a href="#" class="logo-container active-view-trigger" data-target="home1-view" style="margin-bottom: 0;">
+                            <div class="logo-icon-wrapper">
+                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
+                                <i class="fa-solid fa-gear spinning-gear"></i>
+                            </div>
+                            <span class="logo-text">Tire<span class="highlight">Glide</span></span>
+                        </a>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="menu-item active" data-panel="admin-overview"><i class="fa-solid fa-chart-line"></i> Operations Summary</li>
+                        <li class="menu-item" data-panel="admin-dispatcher"><i class="fa-solid fa-truck-ramp-box"></i> Job Dispatcher</li>
+                        <li class="menu-item" data-panel="admin-fleet"><i class="fa-solid fa-truck-moving"></i> Fleet Tracker</li>
+                        <li class="menu-item" data-panel="admin-pricing"><i class="fa-solid fa-sliders"></i> Pricing Settings</li>
+                        <li class="menu-item sidebar-logout-btn" style="margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 16px; color: var(--danger-color);"><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+                    </ul>
+                </aside>
+
+                <!-- Panel Content Container -->
+                <div class="dashboard-panels-container">
+                    <!-- Dashboard controls (Theme & Dir toggles) -->
+                    <div class="dashboard-controls">
+                        <button class="theme-toggle" id="admin-dashboard-theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+                            <i class="fa-solid fa-moon moon-icon"></i>
+                            <i class="fa-solid fa-sun sun-icon"></i>
+                        </button>
+                        <button class="dir-toggle-container" id="admin-dashboard-dir-toggle-btn" aria-label="Toggle Layout Direction">
+                            LTR
+                        </button>
+                    </div>
+                    
+                    <!-- ADMIN PANEL 1: OPERATIONS SUMMARY -->
+                    <div class="dashboard-panel active" id="admin-overview">
+                        <div class="panel-header">
+                            <h2>Operations & Analytics</h2>
+                            <p>Live stats for TireGlide Mobile Unit Fleet.</p>
+                        </div>
+                        
+                        <div class="analytics-cards-grid">
+                            <div class="analytics-card glass">
+                                <span>DAILY REVENUE</span>
+                                <h3 id="admin-revenue-text">$1,485.00</h3>
+                                <p class="trend positive"><i class="fa-solid fa-arrow-up"></i> +12% vs yesterday</p>
+                            </div>
+                            <div class="analytics-card glass">
+                                <span>ACTIVE JOBS</span>
+                                <h3>3 / 4 Vans</h3>
+                                <p class="trend neutral">Steady Dispatch</p>
+                            </div>
+                            <div class="analytics-card glass">
+                                <span>TREAD ALERTS LOGGED</span>
+                                <h3>18 Alerts</h3>
+                                <p class="trend negative"><i class="fa-solid fa-arrow-up"></i> More bald tires logged</p>
+                            </div>
+                        </div>
+
+                        <!-- Admin Dashboard Charts Grid -->
+                        <div class="admin-charts-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 24px;">
+                            <!-- Revenue Chart Widget -->
+                            <div class="chart-widget-admin glass">
+                                <h3>Weekly Dispatch Count</h3>
+                                <div class="svg-chart-container">
+                                    <svg class="admin-svg-chart" viewBox="0 0 500 200">
+                                        <defs>
+                                            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#2563eb" stop-opacity="0.3"/>
+                                                <stop offset="100%" stop-color="#2563eb" stop-opacity="0.0"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <line x1="50" y1="150" x2="480" y2="150" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="100" x2="480" y2="100" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="50" x2="480" y2="50" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <path d="M 50,140 Q 120,110 190,130 T 330,60 T 480,40" fill="none" stroke="#2563eb" stroke-width="4"/>
+                                        <path d="M 50,140 Q 120,110 190,130 T 330,60 T 480,40 L 480,150 L 50,150 Z" fill="url(#chartGrad)"/>
+                                        <circle cx="50" cy="140" r="6" fill="#2563eb"/>
+                                        <circle cx="190" cy="130" r="6" fill="#2563eb"/>
+                                        <circle cx="330" cy="60" r="6" fill="#2563eb"/>
+                                        <circle cx="480" cy="40" r="6" fill="#2563eb"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Fleet Operations Share -->
+                            <div class="chart-widget-admin glass">
+                                <h3>Van Fleet Load Share (Jobs This Week)</h3>
+                                <div class="svg-chart-container">
+                                    <svg class="admin-svg-chart" viewBox="0 0 500 200">
+                                        <line x1="50" y1="150" x2="480" y2="150" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="100" x2="480" y2="100" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="50" x2="480" y2="50" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <!-- 3 vertical bars representing dispatch load -->
+                                        <rect x="100" y="45" width="50" height="105" rx="4" fill="var(--primary-color)"/>
+                                        <rect x="225" y="70" width="50" height="80" rx="4" fill="var(--accent-color)"/>
+                                        <rect x="350" y="100" width="50" height="50" rx="4" fill="var(--success-color)"/>
+                                        <text x="105" y="170" fill="var(--text-secondary)" font-size="12" font-weight="800">Van #1 (45)</text>
+                                        <text x="230" y="170" fill="var(--text-secondary)" font-size="12" font-weight="800">Van #2 (32)</text>
+                                        <text x="355" y="170" fill="var(--text-secondary)" font-size="12" font-weight="800">Van #3 (18)</text>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Weekly Revenue Stream -->
+                            <div class="chart-widget-admin glass">
+                                <h3>Revenue Growth Trend ($)</h3>
+                                <div class="svg-chart-container">
+                                    <svg class="admin-svg-chart" viewBox="0 0 500 200">
+                                        <defs>
+                                            <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>
+                                                <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <line x1="50" y1="150" x2="480" y2="150" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="100" x2="480" y2="100" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <line x1="50" y1="50" x2="480" y2="50" stroke="#cbd5e1" stroke-dasharray="3"/>
+                                        <path d="M 50,130 Q 150,110 250,90 T 480,50" fill="none" stroke="#10b981" stroke-width="4"/>
+                                        <path d="M 50,130 Q 150,110 250,90 T 480,50 L 480,150 L 50,150 Z" fill="url(#revGrad)"/>
+                                        <circle cx="50" cy="130" r="6" fill="#10b981"/>
+                                        <circle cx="250" cy="90" r="6" fill="#10b981"/>
+                                        <circle cx="480" cy="50" r="6" fill="#10b981"/>
+                                        <text x="50" y="170" fill="var(--text-secondary)" font-size="11" font-weight="700">Wk 1</text>
+                                        <text x="235" y="170" fill="var(--text-secondary)" font-size="11" font-weight="700">Wk 3</text>
+                                        <text x="440" y="170" fill="var(--text-secondary)" font-size="11" font-weight="700">Wk 5 (Today)</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ADMIN PANEL 2: JOB DISPATCHER -->
+                    <div class="dashboard-panel" id="admin-dispatcher">
+                        <div class="panel-header">
+                            <h2>Live Job Dispatch Center</h2>
+                            <p>Approve incoming customer bookings and assign them to active service vans.</p>
+                        </div>
+                        <div class="dispatcher-layout glass">
+                            <div class="active-jobs-list">
+                                <h3>Pending Service Requests</h3>
+                                <div class="jobs-table-wrapper">
+                                    <table class="jobs-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Customer</th>
+                                                <th>Vehicle</th>
+                                                <th>Service</th>
+                                                <th>Status</th>
+                                                <th>Action Dispatch</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dispatcher-jobs-body">
+                                            <tr>
+                                                <td>Marcus Vance</td>
+                                                <td>Tesla Model 3</td>
+                                                <td>Rotation</td>
+                                                <td><span class="status-badge success">Completed</span></td>
+                                                <td><span class="text-muted">Van #1 Done</span></td>
+                                            </tr>
+                                            <tr id="admin-job-dispatch-row-demo">
+                                                <td>Sarah Jenkins</td>
+                                                <td>Toyota RAV4</td>
+                                                <td>Rotation & Balancing</td>
+                                                <td><span class="status-badge warning" id="job-demo-status">Pending Dispatch</span></td>
+                                                <td>
+                                                    <div class="btn-group-dispatch" id="job-demo-dispatch-btns">
+                                                        <button class="btn btn-mini btn-primary dispatch-van-btn" data-van="1">Assign Van #1</button>
+                                                        <button class="btn btn-mini btn-secondary dispatch-van-btn" data-van="2">Assign Van #2</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ADMIN PANEL 3: FLEET TRACKER -->
+                    <div class="dashboard-panel" id="admin-fleet">
+                        <div class="panel-header">
+                            <h2>Fleet Van Coordinates</h2>
+                            <p>Real-time location status and telemetry for service vans.</p>
+                        </div>
+                        <div class="fleet-tracker-layout glass">
+                            <div class="fleet-status-sidebar">
+                                <div class="van-telemetry-card active" id="tel-van-1">
+                                    <h4>Van #1 — Robert Miller</h4>
+                                    <p><strong>Status:</strong> Idle at Base</p>
+                                    <p><strong>Battery/Fuel:</strong> 85% Charged</p>
+                                </div>
+                                <div class="van-telemetry-card en-route" id="tel-van-2">
+                                    <h4>Van #2 — Elena Rostova</h4>
+                                    <p><strong>Status:</strong> En Route (Job #2)</p>
+                                    <p><strong>Battery/Fuel:</strong> 72% Charged</p>
+                                </div>
+                                <div class="van-telemetry-card active" id="tel-van-3">
+                                    <h4>Van #3 — Jameson Cole</h4>
+                                    <p><strong>Status:</strong> On Job (Job #1)</p>
+                                    <p><strong>Battery/Fuel:</strong> 45% Charged</p>
+                                </div>
+                            </div>
+                            <div class="fleet-map-container">
+                                <!-- simulated fleet map -->
+                                <div class="fleet-live-map">
+                                    <div class="map-grid-layer"></div>
+                                    <!-- Van 1 Base -->
+                                    <div class="map-pin pin-base" style="top: 50%; left: 50%;">
+                                        <i class="fa-solid fa-warehouse"></i>
+                                    </div>
+                                    <!-- Van 2 route -->
+                                    <div class="map-pin pin-van-active" style="top: 30%; left: 70%;">
+                                        <i class="fa-solid fa-truck"></i>
+                                        <span class="label">Van 2</span>
+                                    </div>
+                                    <!-- Van 3 route -->
+                                    <div class="map-pin pin-van-active" style="top: 75%; left: 25%;">
+                                        <i class="fa-solid fa-truck"></i>
+                                        <span class="label">Van 3</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ADMIN PANEL 4: PRICING SETTINGS -->
+                    <div class="dashboard-panel" id="admin-pricing">
+                        <div class="panel-header">
+                            <h2>Pricing Parameter Configuration</h2>
+                            <p>Change cost values dynamically. Changes propagate to the customer estimators in real-time.</p>
+                        </div>
+                        <div class="pricing-config-card glass">
+                            <h3>Modify Base Pricing</h3>
+                            <form id="admin-pricing-form" onsubmit="event.preventDefault();">
+                                <div class="form-group">
+                                    <label>Tire Rotation Base Price ($)</label>
+                                    <input type="number" class="form-input" id="admin-price-rotation" value="45">
+                                </div>
+                                <div class="form-group">
+                                    <label>Dynamic balancing Base Price ($)</label>
+                                    <input type="number" class="form-input" id="admin-price-balancing" value="60">
+                                </div>
+                                <div class="form-group">
+                                    <label>Rotation & Balancing Combo Base Price ($)</label>
+                                    <input type="number" class="form-input" id="admin-price-rot-bal" value="85">
+                                </div>
+                                <div class="form-group">
+                                    <label>Seasonal Wheel Swap Base Price ($)</label>
+                                    <input type="number" class="form-input" id="admin-price-seasonal" value="120">
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="save-pricing-btn">Apply & Propagate Prices</button>
+                            </form>
+                            <div id="admin-pricing-feedback" class="feedback-box hidden"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Script Links -->
+    <script src="script.js"></script>
+</body>
+</html>
