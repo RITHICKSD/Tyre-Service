@@ -43,8 +43,8 @@
                 <div class="auth-logo-wrapper">
                     <a href="index.html" class="logo-container" style="justify-content: center; margin-bottom: 24px; text-decoration: none;">
                         <div class="logo-icon-wrapper">
-                            <i class="fa-solid fa-circle-nodes logo-icon"></i>
-                            <i class="fa-solid fa-gear spinning-gear"></i>
+                            <i class="fa-solid fa-car-side logo-icon"></i>
+                            <i class="fa-solid fa-wrench spinning-gear"></i>
                         </div>
                         <span class="logo-text">Tire<span class="highlight">Glide</span></span>
                     </a>
@@ -62,9 +62,8 @@
                         <label for="standalone-login-password"><i class="fa-solid fa-lock"></i> Password</label>
                         <input type="password" id="standalone-login-password" class="form-input" required placeholder="••••••••">
                     </div>
-                    <div class="form-group">
-                        <div class="credential-tip">Demo Driver: <strong>user@test.com</strong> / <strong>user123</strong></div>
-                        <div class="credential-tip" style="margin-top: 6px;">Demo Admin: <strong>admin@test.com</strong> / <strong>admin123</strong></div>
+                    <div class="form-group forgot-password-group">
+                        <a href="#" class="forgot-password-link">Forgot password?</a>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Login to Dashboard</button>
                 </form>
@@ -75,6 +74,9 @@
                 </div>
                 
                 <div class="social-login-group">
+                    <button class="btn btn-social apple-btn" type="button" onclick="handleSocial('Apple')">
+                        <i class="fa-brands fa-apple"></i> Continue with Apple
+                    </button>
                     <button class="btn btn-social google-btn" type="button" onclick="handleSocial('Google')">
                         <i class="fa-brands fa-google"></i> Continue with Google
                     </button>

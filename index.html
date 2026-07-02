@@ -27,8 +27,8 @@
             <!-- Left: Logo -->
             <a href="#" class="logo-container" id="logo-btn" aria-label="TireGlide Home">
                 <div class="logo-icon-wrapper">
-                    <i class="fa-solid fa-circle-nodes logo-icon"></i>
-                    <i class="fa-solid fa-gear spinning-gear"></i>
+                    <i class="fa-solid fa-car-side logo-icon"></i>
+                    <i class="fa-solid fa-wrench spinning-gear"></i>
                 </div>
                 <span class="logo-text">Tire<span class="highlight">Glide</span></span>
             </a>
@@ -61,6 +61,12 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link active-view-trigger" data-target="services-view">
                             <span data-i18n="nav.services">Services</span>
+                        </a>
+                    </li>
+                    <!-- Pricing -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active-view-trigger" data-target="pricing-view">
+                            <span>Pricing</span>
                         </a>
                     </li>
                     <!-- Contact -->
@@ -145,9 +151,7 @@
             <!-- Hero Section -->
             <div class="hero-section hero-home1">
                 <div class="hero-content">
-                    <div class="safety-badge">
-                        <i class="fa-solid fa-shield-halved"></i> <span data-i18n="home1.badge">Safety-First Mobile Tire Care</span>
-                    </div>
+                    <p class="hero-pretitle">Mobile tire service built for confidence, convenience, and control.</p>
                     <h1 data-i18n="home1.title">Tire Shop Quality, <br><span class="gradient-text">Brought to Your Driveway</span></h1>
                     <p data-i18n="home1.subtitle">Don't waste hours at a shop. Our mobile service vans deliver precision tire rotation, computerized balancing, and state-of-the-art tread scanner reports directly to your home or office.</p>
                     <div class="hero-buttons">
@@ -174,6 +178,7 @@
                     </div>
                 </div>
                 <div class="hero-graphic">
+                    <img class="hero-feature-image" src="m1.jpg" alt="TireGlide mobile service van arriving at a customer driveway">
                     <div class="floating-card glass card-top">
                         <i class="fa-solid fa-truck-fast text-blue"></i>
                         <div>
@@ -191,42 +196,6 @@
                             <p>Front Left: 8/32" | Front Right: 8/32"</p>
                         </div>
                     </div>
-                    <!-- Vector Graphic illustrating Mobile Tire Service -->
-                    <div class="illustration-container">
-                        <svg viewBox="0 0 500 400" class="hero-svg">
-                            <defs>
-                                <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#2563eb" />
-                                    <stop offset="100%" stop-color="#1d4ed8" />
-                                </linearGradient>
-                                <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#f59e0b" />
-                                    <stop offset="100%" stop-color="#d97706" />
-                                </linearGradient>
-                            </defs>
-                            <!-- Background Circles -->
-                            <circle cx="250" cy="200" r="150" fill="currentColor" class="svg-bg-circle" opacity="0.05" />
-                            <circle cx="100" cy="300" r="40" fill="url(#blueGrad)" opacity="0.1" />
-                            <!-- Simulated Van -->
-                            <rect x="180" y="160" width="200" height="110" rx="15" fill="url(#blueGrad)" />
-                            <rect x="330" y="180" width="50" height="50" rx="5" fill="#f8fafc" opacity="0.9" />
-                            <circle cx="230" cy="280" r="25" fill="#0f172a" />
-                            <circle cx="230" cy="280" r="10" fill="#cbd5e1" />
-                            <circle cx="330" cy="280" r="25" fill="#0f172a" />
-                            <circle cx="330" cy="280" r="10" fill="#cbd5e1" />
-                            <!-- Tread lines details -->
-                            <path d="M 230 160 L 230 200 M 250 160 L 250 200" stroke="#f8fafc" stroke-width="4" opacity="0.3"/>
-                            <!-- Logo text in van -->
-                            <text x="200" y="225" font-family="'Outfit', sans-serif" font-weight="bold" fill="#f8fafc" font-size="18">TireGlide</text>
-                            <!-- Jack lift -->
-                            <path d="M 100 270 L 150 220 L 170 270" stroke="url(#amberGrad)" stroke-width="8" stroke-linecap="round" fill="none"/>
-                            <!-- Balanced Tire -->
-                            <circle cx="100" cy="220" r="35" fill="none" stroke="#0f172a" stroke-width="12" />
-                            <circle cx="100" cy="220" r="15" fill="url(#amberGrad)" />
-                            <line x1="100" y1="185" x2="100" y2="255" stroke="#f8fafc" stroke-width="3"/>
-                            <line x1="65" y1="220" x2="135" y2="220" stroke="#f8fafc" stroke-width="3"/>
-                        </svg>
-                    </div>
                 </div>
             </div>
 
@@ -241,35 +210,35 @@
                     <div class="features-grid">
                         <div class="feature-card">
                             <div class="icon-box blue">
-                                <i class="fa-solid fa-house-chimney"></i>
+                                <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <h3>At-Home / At-Work Convenience</h3>
-                            <p>No more sitting in smelly waiting rooms. We perform all rotations, balancing, and resets in your driveway or parking space while you continue with your day.</p>
+                            <p>No more sitting in waiting rooms. We bring full tire service to your driveway, workplace, or fleet yard with minimal disruption.</p>
                         </div>
                         <div class="feature-card">
                             <div class="icon-box amber">
-                                <i class="fa-solid fa-microchip"></i>
+                                <i class="fa-solid fa-gauge-high"></i>
                             </div>
-                            <h3>Computerized Road balancing</h3>
-                            <p>Every mobile tire rotation is backed by our specialized on-board dynamic balancing rig, ensuring vibrations are eliminated for a smoother ride.</p>
+                            <h3>Computerized Road Balancing</h3>
+                            <p>Each wheel is balanced using an onboard road force analyzer, eliminating vibration and improving ride stability.</p>
                         </div>
                         <div class="feature-card">
                             <div class="icon-box green">
-                                <i class="fa-solid fa-chart-line"></i>
+                                <i class="fa-solid fa-ruler-vertical"></i>
                             </div>
                             <h3>Digital Laser Tread Analysis</h3>
-                            <p>We perform full laser scans on all 4 tires, sending an interactive report directly to your dashboard detailing safety thresholds and wear indicators.</p>
+                            <p>Full-width laser scans measure tread depth and wear patterns, enabling smarter rotation and replacement recommendations.</p>
                         </div>
                         <div class="feature-card">
                             <div class="icon-box red">
-                                <i class="fa-solid fa-award"></i>
+                                <i class="fa-solid fa-file-shield"></i>
                             </div>
                             <h3>Warranty Integration</h3>
-                            <p>Every service is logged in your account, ensuring your tire manufacturer warranties remain valid. We provide certified digital proof of service.</p>
+                            <p>Every service record is logged into your account so your tire warranty stays valid and traceable with certified proof.</p>
                         </div>
                     </div>
                     <div class="features-featured-image-holder">
-                        <img class="section-featured-image" src="m1.jpg" alt="TireGlide technician performing safe torque balance check">
+                        <img class="section-featured-image" src="m12.webp" alt="On-board dynamic wheel balancer in the TireGlide mobile lab">
                     </div>
                 </div>
             </section>
@@ -509,7 +478,7 @@
                         </div>
                         <p>"TireGlide saved my Saturday. The technician arrived right at 10 AM, balanced my wheels on-site, and checked my tread. I never had to leave my house."</p>
                         <div class="author-info">
-                            <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div class="author-avatar"><img src="male1.avif" alt="Marcus Vance"></div>
                             <div>
                                 <h4>Marcus Vance</h4>
                                 <span>Tesla Model 3 Owner</span>
@@ -522,7 +491,7 @@
                         </div>
                         <p>"Super detailed service. The tread report showing my front tires were wearing down faster helped me justify rotating them. Highly recommended service."</p>
                         <div class="author-info">
-                            <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                            <div class="author-avatar"><img src="f1.avif" alt="Sarah Jenkins"></div>
                             <div>
                                 <h4>Sarah Jenkins</h4>
                                 <span>Toyota RAV4 Driver</span>
@@ -535,7 +504,7 @@
                         </div>
                         <p>"Our company fleet relies on TireGlide. They rotate tires for 8 delivery vans right in our lot after shifts. Incredible time saver and excellent safety audits."</p>
                         <div class="author-info">
-                            <div class="author-avatar"><i class="fa-solid fa-user-group"></i></div>
+                            <div class="author-avatar"><img src="male2.avif" alt="David Chen"></div>
                             <div>
                                 <h4>David Chen</h4>
                                 <span>Logistics Fleet Director</span>
@@ -556,8 +525,8 @@
                     <div class="footer-brand">
                         <div class="logo-container" style="margin-bottom: 16px;">
                             <div class="logo-icon-wrapper">
-                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
-                                <i class="fa-solid fa-gear spinning-gear"></i>
+                                <i class="fa-solid fa-car-side logo-icon"></i>
+                                <i class="fa-solid fa-wrench spinning-gear"></i>
                             </div>
                             <span class="logo-text">Tire<span class="highlight">Glide</span></span>
                         </div>
@@ -597,7 +566,7 @@
         <!-- ==================== VIEW 2: HOME 2 (CREATIVE) ==================== -->
         <section id="home2-view" class="app-view">
             <!-- Alternative Hero -->
-            <div class="hero-section hero-home2">
+            <section class="section hero-section hero-home2">
                 <div class="hero-content">
                     <div class="creative-tag">PREMIUM MOBILE LABS</div>
                     <h1 class="headline-large">We Bring the <br><span class="accent-glow">Tire Shop</span> To You</h1>
@@ -605,9 +574,6 @@
                     <div class="cta-group-h2">
                         <button class="btn btn-primary active-view-trigger" data-target="user-dashboard-view">
                             <i class="fa-solid fa-calendar-days"></i> Schedule Appointment
-                        </button>
-                        <button class="btn btn-glass active-view-trigger" data-target="services-view">
-                            Explore Technical Specs
                         </button>
                     </div>
                 </div>
@@ -625,7 +591,7 @@
                         <p>Equipped with Italian Corghi balancing systems.</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- H2-Section 2: Interactive Timeline (How It Works) -->
             <section class="section timeline-section">
@@ -671,80 +637,98 @@
 
             <!-- H2-Section 3: Fleet Van Showcase -->
             <section class="section fleet-showcase">
-                <div class="showcase-container">
-                    <div class="showcase-content">
+                <div class="showcase-container medium-image-layout">
+                    <div class="showcase-text">
                         <span class="sub-title">Our Workshop on Wheels</span>
-                        <h2>Inside the TireGlide Mobile Lab</h2>
-                        <p>We don't use hand tools or basic jacks. Each service van is a custom-built, temperature-controlled workshop housing industrial equipment designed for high-performance vehicles.</p>
+                        <h2>Mobile Tire Service Built for Precision</h2>
+                        <p>Our vans are custom mobile labs that bring dealership-grade balance, tread scanning, and certified safety checks directly to your location.</p>
                         <ul class="specs-list">
-                            <li><i class="fa-solid fa-microchip text-amber"></i> <strong>Road Force Balancer:</strong> Onboard computerized balancer detects internal radial force variance.</li>
-                            <li><i class="fa-solid fa-compress text-amber"></i> <strong>Tire Mounting System:</strong> Specialized touchless mounting machine prevents alloy rim scratching.</li>
-                            <li><i class="fa-solid fa-scale-balanced text-amber"></i> <strong>Torque Calibration:</strong> Pneumatic systems backed by digital manual torque wrench validations.</li>
+                            <li><i class="fa-solid fa-microchip text-amber"></i> Computerized road-force balancing for vibration-free handling.</li>
+                            <li><i class="fa-solid fa-compress text-amber"></i> Touch-free tire mounting safeguards alloy wheels.</li>
+                            <li><i class="fa-solid fa-scale-balanced text-amber"></i> Digital torque validation with certified service reporting.</li>
                         </ul>
                     </div>
-                    <div class="showcase-visual glass">
-                        <div class="van-mockup-frame">
-                            <div class="van-status-pill"><i class="fa-solid fa-check-circle"></i> SYSTEM: ONLINE</div>
-                            <i class="fa-solid fa-truck-moving van-massive-icon"></i>
-                            <div class="stats-row-van">
-                                <div><strong>Compressor:</strong> 150 PSI</div>
-                                <div><strong>Power:</strong> 10kW Generator</div>
-                                <div><strong>Payload:</strong> 3.5 Tons</div>
-                            </div>
-                        </div>
+                    <div class="showcase-image-holder glass">
+                        <img class="workshop-image" src="m13.webp" alt="Medium-sized image of the TireGlide mobile lab inside a service van">
                     </div>
                 </div>
             </section>
 
             <!-- H2-Section 4: Interactive Quick Booking Slot Checker -->
             <section class="section scheduler-section">
-                <div class="section-header">
-                    <span class="sub-title">Quick Booking</span>
-                    <h2>Check Schedule Openings Today</h2>
-                    <p>Enter your contact details to review current service availability windows in your area.</p>
-                </div>
-                <div class="quick-scheduler-box glass">
-                    <form id="quick-scheduler-form" class="scheduler-grid-form" onsubmit="event.preventDefault();">
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-user"></i> Full Name</label>
-                            <input type="text" class="form-input" required placeholder="John Doe">
+                <div class="grid-2col scheduler-grid-layout">
+                    <div class="scheduler-copy">
+                        <span class="sub-title">Quick Booking</span>
+                        <h2>Reserve Your Mobile Tire Service Window</h2>
+                        <p>Tap into our live dispatch schedule and lock in the fastest available appointment for roadside rotating, balancing, or emergency flat repair.</p>
+                        <div class="scheduler-features-list">
+                            <div class="feature-line"><i class="fa-solid fa-check text-blue"></i><span>Same-day availability for urgent calls</span></div>
+                            <div class="feature-line"><i class="fa-solid fa-check text-blue"></i><span>Technician arrival windows with GPS tracking</span></div>
+                            <div class="feature-line"><i class="fa-solid fa-check text-blue"></i><span>Instant confirmation with digital service record</span></div>
                         </div>
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-phone"></i> Phone Number</label>
-                            <input type="tel" class="form-input" required placeholder="(555) 000-0000">
+                    </div>
+
+                    <div class="quick-scheduler-box glass scheduler-app-card">
+                        <div class="scheduler-card-header">
+                            <div>
+                                <h3>Service Reservation</h3>
+                                <p>Fast booking in 4 fields.</p>
+                            </div>
+                            <div class="status-pill green"><i class="fa-solid fa-signal"></i> Live Dispatch</div>
                         </div>
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-car-side"></i> Vehicle Make/Model</label>
-                            <input type="text" class="form-input" required placeholder="Tesla Model Y">
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-calendar"></i> Preferred Date</label>
-                            <input type="date" class="form-input" required id="scheduler-date-input">
-                        </div>
-                        <div class="form-group full-width-field">
-                            <button class="btn btn-primary btn-block" type="submit" id="quick-sched-submit-btn">
-                                <i class="fa-solid fa-circle-question"></i> Check Selected Slots
-                            </button>
-                        </div>
-                    </form>
-                    <div id="quick-sched-feedback" class="sched-feedback hidden"></div>
+                        <form id="quick-scheduler-form" class="scheduler-grid-form" onsubmit="event.preventDefault();">
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-user"></i> Full Name</label>
+                                <input type="text" class="form-input" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                                <input type="tel" class="form-input" required placeholder="(555) 000-0000">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-car-side"></i> Vehicle Make/Model</label>
+                                <input type="text" class="form-input" required placeholder="Tesla Model Y">
+                            </div>
+                            <div class="form-group full-width-field">
+                                <label><i class="fa-solid fa-calendar-days"></i> Preferred Date</label>
+                                <input type="date" class="form-input" required id="scheduler-date-input">
+                            </div>
+                            <div class="form-group full-width-field">
+                                <button class="btn btn-primary btn-block" type="submit" id="quick-sched-submit-btn">
+                                    <i class="fa-solid fa-calendar-check"></i> Reserve Slot
+                                </button>
+                            </div>
+                        </form>
+                        <div id="quick-sched-feedback" class="sched-feedback hidden"></div>
+                    </div>
                 </div>
             </section>
 
             <!-- H2-Section 5: Warranty Protection Program -->
             <section class="section warranty-promo">
-                <div class="warranty-card-h2">
-                    <div class="warranty-badge-big">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <span>WARRANTY PROTECT</span>
+                <div class="grid-2col warranty-grid">
+                    <div class="warranty-image-holder glass">
+                        <img class="warranty-image" src="m6.jpg" alt="Technician logging warranty maintenance records" />
                     </div>
-                    <div class="warranty-details-text">
+                    <div class="warranty-copy">
+                        <span class="sub-title">Warranty Protect</span>
                         <h2>Tire Manufacturer Warranty Maintenance</h2>
-                        <p>Most tire manufacturers (Michelin, Bridgestone, Continental) require certified rotation every 5,000 to 8,000 miles to keep treadwear warranties valid. TireGlide acts as your automated logger, storing certified maintenance records in your customer portal and proactively notifying you when rotations are due.</p>
-                        <div class="certs-badge-group">
-                            <span><i class="fa-solid fa-file-shield"></i> Digital Log Entry</span>
-                            <span><i class="fa-solid fa-check"></i> OEM Mileage Logs</span>
+                        <p>Keep your tires covered and your warranty valid with certified rotational service, digital inspection reports, and the exact maintenance records OEMs require.</p>
+                        <div class="warranty-feature-list">
+                            <div class="feature-item">
+                                <strong>Certified rotation reports</strong>
+                                <span>Delivered to your customer portal and OEM file.</span>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Automatic recall alerts</strong>
+                                <span>We notify you when your next covered service window approaches.</span>
+                            </div>
+                            <div class="feature-item">
+                                <strong>Documented service history</strong>
+                                <span>Protects your warranty and makes insurance claims easier.</span>
+                            </div>
                         </div>
+                        <button class="btn btn-primary btn-wide">Enable Warranty Service</button>
                     </div>
                 </div>
             </section>
@@ -840,8 +824,8 @@
                     <div class="footer-brand">
                         <div class="logo-container" style="margin-bottom: 16px;">
                             <div class="logo-icon-wrapper">
-                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
-                                <i class="fa-solid fa-gear spinning-gear"></i>
+                                <i class="fa-solid fa-car-side logo-icon"></i>
+                                <i class="fa-solid fa-wrench spinning-gear"></i>
                             </div>
                             <span class="logo-text">Tire<span class="highlight">Glide</span></span>
                         </div>
@@ -978,8 +962,8 @@
                     <div class="footer-brand">
                         <div class="logo-container" style="margin-bottom: 16px;">
                             <div class="logo-icon-wrapper">
-                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
-                                <i class="fa-solid fa-gear spinning-gear"></i>
+                                <i class="fa-solid fa-car-side logo-icon"></i>
+                                <i class="fa-solid fa-wrench spinning-gear"></i>
                             </div>
                             <span class="logo-text">Tire<span class="highlight">Glide</span></span>
                         </div>
@@ -1029,7 +1013,6 @@
                 <div class="services-detail-grid">
                     <div class="service-detail-card glass">
                         <div class="icon-header blue-bg">
-                            <i class="fa-solid fa-rotate"></i>
                             <h3>Mobile Tire Rotation</h3>
                         </div>
                         <div class="card-body">
@@ -1046,7 +1029,6 @@
 
                     <div class="service-detail-card glass">
                         <div class="icon-header amber-bg">
-                            <i class="fa-solid fa-scale-unbalanced-stroke"></i>
                             <h3>Computerized Dynamic Balancing</h3>
                         </div>
                         <div class="card-body">
@@ -1063,7 +1045,6 @@
 
                     <div class="service-detail-card glass">
                         <div class="icon-header green-bg">
-                            <i class="fa-solid fa-check-double"></i>
                             <h3>Ultimate Rotation & Balancing</h3>
                         </div>
                         <div class="card-body">
@@ -1080,72 +1061,84 @@
                 </div>
             </section>
 
-            <!-- New Services Section 2: Road Hazard Fleet Accounts -->
             <section class="section service-section-add">
-                <div class="grid-2col">
+                <div class="grid-2col reverse-grid">
                     <div class="story-image-container">
-                        <img class="section-featured-image" src="m6.jpg" alt="Fleet of service vehicles">
+                        <img class="section-featured-image" src="m6.jpg" alt="Fleet account pricing dashboard" />
                     </div>
                     <div class="story-text">
-                        <span class="sub-title">Commercial Operations</span>
-                        <h2>Road Hazard Fleet Accounts</h2>
-                        <p>Minimize downtime for your delivery vehicles, sales team, and cargo trucks. TireGlide provides custom corporate fleet pricing and priority on-site routing scheduling. We service all light-commercial delivery vans, utility trucks, and passenger vehicles directly in your corporate lot or transit yard between shifts, complete with automated safety log compliance reports.</p>
+                        <span class="sub-title">Fleet Accounts</span>
+                        <h2>Road Hazard Fleet Coverage</h2>
+                        <p>Custom fleet plans for delivery vans, cargo trucks, and sales vehicles that need rapid on-site tire service and priority dispatch.</p>
+                        <div class="service-icon-card glass">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Fleet warranty uplift available</span>
+                        </div>
+                        <ul class="service-add-list">
+                            <li>Dedicated fleet account manager</li>
+                            <li>Automated maintenance tracking</li>
+                            <li>Priority same-day response windows</li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- New Services Section 3: TPMS Diagnostic Calibration -->
             <section class="section service-section-add">
-                <div class="grid-2col reverse-grid">
+                <div class="grid-2col">
+                    <div class="story-image-container">
+                        <img class="section-featured-image" src="m7.jpg" alt="Technician calibrating TPMS sensors" />
+                    </div>
                     <div class="story-text">
-                        <span class="sub-title">Sensor Calibration</span>
+                        <span class="sub-title">Sensor Services</span>
                         <h2>TPMS Diagnostic Calibration</h2>
-                        <p>Is your dashboard warning light blinking? A malfunctioning Tire Pressure Monitoring System (TPMS) poses a safety risk. Our technicians carry specialized wireless diagnostic programming tools. We check sensor battery states, reset receiver chips, and replace worn TPMS valves or program brand-new sensors on-site for both domestic and import vehicles.</p>
-                    </div>
-                    <div class="story-image-container">
-                        <img class="section-featured-image" src="m7.jpg" alt="Vehicle dashboard TPMS status indicator">
-                    </div>
-                </div>
-            </section>
-
-            <!-- New Services Section 4: Performance Wheel Balancing -->
-            <section class="section service-section-add">
-                <div class="grid-2col">
-                    <div class="story-image-container">
-                        <img class="section-featured-image" src="m17.avif" alt="Performance Wheel Balancing">
-                    </div>
-                    <div class="story-text">
-                        <span class="sub-title">High Speed Calibration</span>
-                        <h2>Performance Wheel Balancing</h2>
-                        <p>For sports cars, high-end electric vehicles, and racing enthusiasts, standard balancing is not enough. Our mobile vans utilize road force dynamic balancing systems. By simulating high-speed road conditions inside our custom workshop unit, we find microscopic structural weight deviations, ensuring a completely smooth vibration-free steering response up to track speeds.</p>
+                        <p>We diagnose, recalibrate, and replace tire pressure monitoring sensors on-site so your vehicle stays compliant and the dashboard light stays off.</p>
+                        <div class="service-icon-card glass">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M17 8V7a5 5 0 0 0-10 0v1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-2Zm-8-1a3 3 0 0 1 6 0v1H9V7Zm8 12H7V10h10v8Zm-5-3a1.5 1.5 0 0 1-1.5-1.5V13a1.5 1.5 0 1 1 3 0v1.5A1.5 1.5 0 0 1 12 16Z"/>
+                            </svg>
+                            <span>Secure TPMS signal restoration</span>
+                        </div>
+                        <ul class="service-add-list">
+                            <li>Wireless TPMS programming</li>
+                            <li>Sensor replacement and reseal</li>
+                            <li>OEM compatibility checks</li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- New Services Section 5: Seasonal Tire Storage Solutions -->
             <section class="section service-section-add">
                 <div class="grid-2col reverse-grid">
-                    <div class="story-text">
-                        <span class="sub-title">Locker Storage</span>
-                        <h2>Seasonal Tire Storage Solutions</h2>
-                        <p>Don't crowd your garage with offseason tire sets. When we perform your seasonal tire swap (winter to summer or vice versa), we can tag, clean, and transport your secondary tire set to our off-site climate-controlled warehouse. Your tires are stored away from ozone and moisture, and logged in your online profile for easy dispatch when seasonal swaps are needed.</p>
-                    </div>
                     <div class="story-image-container">
-                        <img class="section-featured-image" src="m19.webp" alt="Seasonal Tire Storage Solutions">
+                        <img class="section-featured-image" src="m17.avif" alt="Performance wheel balancing machine" />
+                    </div>
+                    <div class="story-text">
+                        <span class="sub-title">Performance Care</span>
+                        <h2>Precision Performance Wheel Balancing</h2>
+                        <p>High-speed wheel balancing for sports cars, performance EVs, and premium sedans using road force measurement to eliminate vibration at speed.</p>
+                        <ul class="service-add-list">
+                            <li>Dynamic road force balancing</li>
+                            <li>High-end alloy-safe weight application</li>
+                            <li>Stability optimization for highway driving</li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- New Services Section 6: Suburban Emergency Flat Repair -->
             <section class="section service-section-add">
                 <div class="grid-2col">
                     <div class="story-image-container">
-                        <img class="section-featured-image" src="m20.png" alt="Suburban Emergency Flat Repair">
+                        <img class="section-featured-image" src="m19.webp" alt="Seasonal tire storage warehouse" />
                     </div>
                     <div class="story-text">
-                        <span class="sub-title">Roadside Safety</span>
-                        <h2>Suburban Emergency Flat Repair</h2>
-                        <p>If you pick up a nail, screw, or road debris in your tire, don't attempt to drive on it. Our dispatch center can route a mobile unit to your location. We dismount the tire, perform a full safety inspection, clean the puncture channel, and apply a high-quality patch-plug combination from the inside—the only repair method approved by the Tire Industry Association.</p>
+                        <span class="sub-title">Seasonal Storage</span>
+                        <h2>Climate-Controlled Seasonal Tire Storage</h2>
+                        <p>Store your off-season tires safely in our climate-controlled warehouse with pickup and delivery on your next swap.</p>
+                        <ul class="service-add-list">
+                            <li>Secure, ozone-safe storage</li>
+                            <li>Tagged and tracked tire sets</li>
+                            <li>Ready for seasonal swaps at your door</li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -1155,8 +1148,8 @@
                     <div class="footer-brand">
                         <div class="logo-container" style="margin-bottom: 16px;">
                             <div class="logo-icon-wrapper">
-                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
-                                <i class="fa-solid fa-gear spinning-gear"></i>
+                                <i class="fa-solid fa-car-side logo-icon"></i>
+                                <i class="fa-solid fa-wrench spinning-gear"></i>
                             </div>
                             <span class="logo-text">Tire<span class="highlight">Glide</span></span>
                         </div>
@@ -1192,6 +1185,58 @@
             </footer>
         </section>
 
+        <!-- ==================== VIEW 8: PRICING ==================== -->
+        <section id="pricing-view" class="app-view">
+            <div class="view-header" style="background-image: url('m17.avif');">
+                <div class="view-header-container">
+                    <h1 class="gradient-text">Transparent Service Pricing</h1>
+                    <p>Choose the right package for your vehicle type with clear rates for cars, SUVs, and light trucks.</p>
+                </div>
+            </div>
+
+            <section class="section pricing-section">
+                <div class="pricing-header">
+                    <span class="sub-title">Pricing Plans</span>
+                    <h2>Simple, Upfront Rates for Every Vehicle</h2>
+                    <p>Compare our core packages with add-on options and service bundles so your appointment matches your tire care needs.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card glass">
+                        <h3>Standard Rotation</h3>
+                        <p class="pricing-tier">Sedan / Hatchback</p>
+                        <div class="price-display">$45</div>
+                        <ul>
+                            <li>4-tire rotation</li>
+                            <li>Tread depth inspection</li>
+                            <li>Digital service log</li>
+                        </ul>
+                        <span class="pricing-note">SUV / Crossover +15%</span>
+                    </div>
+                    <div class="pricing-card glass recommended">
+                        <h3>Rotation + Balance</h3>
+                        <p class="pricing-tier">All vehicle types</p>
+                        <div class="price-display">$85</div>
+                        <ul>
+                            <li>Rotation + computerized dynamic balancing</li>
+                            <li>TPMS pressure recalibration</li>
+                            <li>Driver safety summary</li>
+                        </ul>
+                        <span class="pricing-note">Light truck / van +30%</span>
+                    </div>
+                    <div class="pricing-card glass">
+                        <h3>Premium Fleet Bundle</h3>
+                        <p class="pricing-tier">Car, SUV, Truck</p>
+                        <div class="price-display">$120</div>
+                        <ul>
+                            <li>Rotation, balance, and laser tread report</li>
+                            <li>Warranty documentation</li>
+                            <li>Priority same-day dispatch</li>
+                        </ul>
+                        <span class="pricing-note">Includes up to 4 vehicles per appointment</span>
+                    </div>
+                </div>
+            </section>
+        </section>
 
         <!-- ==================== VIEW 5: CONTACT ==================== -->
         <section id="contact-view" class="app-view">
@@ -1251,6 +1296,27 @@
                 </div>
             </section>
 
+            <section class="section faq-section">
+                <div class="faq-grid">
+                    <div class="faq-card glass">
+                        <h3>Do you service all vehicle types?</h3>
+                        <p>Yes — we support sedans, hatchbacks, SUVs, light trucks, and commercial vans with custom mobile units and tire-specific balancing equipment.</p>
+                    </div>
+                    <div class="faq-card glass">
+                        <h3>How long does the mobile tire service take?</h3>
+                        <p>Most tire rotations and digital balancing appointments are completed in 35–45 minutes, depending on wheel size and vehicle drivetrain.</p>
+                    </div>
+                    <div class="faq-card glass">
+                        <h3>Can I book service outside normal coverage zones?</h3>
+                        <p>If you are just outside our standard range, contact dispatch and we can sometimes route a custom van for an additional geographic service fee.</p>
+                    </div>
+                    <div class="faq-card glass">
+                        <h3>How is warranty documentation handled?</h3>
+                        <p>Every service includes a certified digital record uploaded to your account, preserving warranty status for most major tire manufacturers.</p>
+                    </div>
+                </div>
+            </section>
+
             <!-- New Contact Section 2: Dispatch Service Maps & Coverage -->
             <section class="section contact-section-add">
                 <div class="grid-2col">
@@ -1274,7 +1340,7 @@
                         <p>Need to send physical paperwork, discuss fleet contracts, or arrange billing operations? You can reach our administrative office team. TireGlide HQ is located at: <strong>100 Enterprise Way, Suite 400, Metro City, NY 10001</strong>. Office lines are open Monday through Friday, 9:00 AM to 5:00 PM EST. Please note: we do not service consumer tires at this administrative location.</p>
                     </div>
                     <div class="story-image-container">
-                        <img class="section-featured-image" src="m16.jpg" alt="Corporate Headquarters">
+                        <img class="section-featured-image" src="head.jpg" alt="Corporate Headquarters">
                     </div>
                 </div>
             </section>
@@ -1283,7 +1349,7 @@
             <section class="section contact-section-add">
                 <div class="grid-2col">
                     <div class="story-image-container">
-                        <img class="section-featured-image" src="m17.avif" alt="Media & Press Inquiries">
+                        <img class="section-featured-image" src="ttrr.jpg" alt="Media & Press Inquiries">
                     </div>
                     <div class="story-text">
                         <span class="sub-title">Public Relations</span>
@@ -1302,7 +1368,7 @@
                         <p>Do you have a passion for automotive precision and customer service? TireGlide is rapidly expanding our service zones. We are looking for TIA-certified mobile technicians, logistics dispatchers, and software operations developers. We offer competitive benefits, custom tooling packages, and safety-focused training programs. Apply online at <strong>careers@tireglide-mobile.com</strong>.</p>
                     </div>
                     <div class="story-image-container">
-                        <img class="section-featured-image" src="m10.jpg" alt="Career Opportunities">
+                        <img class="section-featured-image" src="team.jpg" alt="Career Opportunities">
                     </div>
                 </div>
             </section>
@@ -1312,8 +1378,8 @@
                     <div class="footer-brand">
                         <div class="logo-container" style="margin-bottom: 16px;">
                             <div class="logo-icon-wrapper">
-                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
-                                <i class="fa-solid fa-gear spinning-gear"></i>
+                                <i class="fa-solid fa-car-side logo-icon"></i>
+                                <i class="fa-solid fa-wrench spinning-gear"></i>
                             </div>
                             <span class="logo-text">Tire<span class="highlight">Glide</span></span>
                         </div>
@@ -1358,8 +1424,8 @@
                     <div class="sidebar-header">
                         <a href="#" class="logo-container active-view-trigger" data-target="home1-view" style="margin-bottom: 0;">
                             <div class="logo-icon-wrapper">
-                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
-                                <i class="fa-solid fa-gear spinning-gear"></i>
+                                <i class="fa-solid fa-car-side logo-icon"></i>
+                                <i class="fa-solid fa-wrench spinning-gear"></i>
                             </div>
                             <span class="logo-text">Tire<span class="highlight">Glide</span></span>
                         </a>
@@ -1379,6 +1445,13 @@
                 <div class="dashboard-panels-container">
                     <!-- Dashboard controls (Theme & Dir toggles) -->
                     <div class="dashboard-controls">
+                        <div class="dashboard-user-card">
+                            <span class="user-avatar-dashboard" id="dashboard-user-initials">JD</span>
+                            <div>
+                                <strong id="dashboard-welcome-text">Welcome, Driver</strong>
+                                <p>Ready to book your next mobile service?</p>
+                            </div>
+                        </div>
                         <button class="theme-toggle" id="user-dashboard-theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
                             <i class="fa-solid fa-moon moon-icon"></i>
                             <i class="fa-solid fa-sun sun-icon"></i>
@@ -1802,8 +1875,8 @@
                     <div class="sidebar-header">
                         <a href="#" class="logo-container active-view-trigger" data-target="home1-view" style="margin-bottom: 0;">
                             <div class="logo-icon-wrapper">
-                                <i class="fa-solid fa-circle-nodes logo-icon"></i>
-                                <i class="fa-solid fa-gear spinning-gear"></i>
+                                <i class="fa-solid fa-car-side logo-icon"></i>
+                                <i class="fa-solid fa-wrench spinning-gear"></i>
                             </div>
                             <span class="logo-text">Tire<span class="highlight">Glide</span></span>
                         </a>
@@ -1821,6 +1894,13 @@
                 <div class="dashboard-panels-container">
                     <!-- Dashboard controls (Theme & Dir toggles) -->
                     <div class="dashboard-controls">
+                        <div class="dashboard-user-card">
+                            <span class="user-avatar-dashboard" id="dashboard-admin-initials">AD</span>
+                            <div>
+                                <strong id="dashboard-admin-welcome-text">Hello, Dispatcher</strong>
+                                <p>Manage routes, jobs, and fleet health.</p>
+                            </div>
+                        </div>
                         <button class="theme-toggle" id="admin-dashboard-theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
                             <i class="fa-solid fa-moon moon-icon"></i>
                             <i class="fa-solid fa-sun sun-icon"></i>

@@ -257,6 +257,8 @@ function switchView(viewId) {
             }, 300);
         }
 
+        updateActiveNavItem(viewId);
+
         // Initialize view specific simulations
         if (viewId === 'user-dashboard-view') {
             switchDashboardPanel('user-overview');
@@ -269,6 +271,18 @@ function switchView(viewId) {
             stopLiveTrackerSimulation();
         }
     }, 400);
+}
+
+function updateActiveNavItem(viewId) {
+    const allLinks = document.querySelectorAll('.nav-link, .dropdown-item');
+    allLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+
+    const activeLink = document.querySelector(`.nav-link[data-target="${viewId}"]`) || document.querySelector(`.dropdown-item[data-target="${viewId}"]`);
+    if (activeLink) {
+        activeLink.classList.add('active');
+    }
 }
 
 /* ==========================================================================
@@ -559,6 +573,18 @@ function performLogin(role, name, email) {
         if (sbName) sbName.textContent = name;
         const ovName = document.getElementById('ov-vehicle-name');
         if (ovName) ovName.textContent = '2023 Tesla Model Y';
+
+        const initialsEl = document.getElementById('dashboard-user-initials');
+        const welcomeEl = document.getElementById('dashboard-welcome-text');
+        if (initialsEl) initialsEl.textContent = initialsText;
+        if (welcomeEl) welcomeEl.textContent = `Welcome back, ${name.split(' ')[0]}`;
+    }
+
+    if (role === 'admin') {
+        const initialsEl = document.getElementById('dashboard-admin-initials');
+        const welcomeEl = document.getElementById('dashboard-admin-welcome-text');
+        if (initialsEl) initialsEl.textContent = initialsText;
+        if (welcomeEl) welcomeEl.textContent = `Welcome back, ${name.split(' ')[0]}`;
     }
 }
 
