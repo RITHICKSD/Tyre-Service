@@ -661,8 +661,14 @@ ul {
     margin-bottom: 35px;
 }
 
+.estimator-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .estimator-info p {
-    margin-bottom: 32px;
+    margin-bottom: 0;
     max-width: 560px;
 }
 
@@ -2067,6 +2073,7 @@ ul {
 #services-view .view-header,
 #pricing-view .view-header,
 #contact-view .view-header,
+#blog-view .view-header,
 #about-view .view-header h1,
 #about-view .view-header p,
 #services-view .view-header h1,
@@ -2074,14 +2081,17 @@ ul {
 #pricing-view .view-header h1,
 #pricing-view .view-header p,
 #contact-view .view-header h1,
-#contact-view .view-header p {
+#contact-view .view-header p,
+#blog-view .view-header h1,
+#blog-view .view-header p {
     color: #ffffff;
 }
 
 #about-view .view-header h1.gradient-text,
 #services-view .view-header h1.gradient-text,
 #pricing-view .view-header h1.gradient-text,
-#contact-view .view-header h1.gradient-text {
+#contact-view .view-header h1.gradient-text,
+#blog-view .view-header h1.gradient-text {
     background: none !important;
     -webkit-background-clip: unset !important;
     -webkit-text-fill-color: #ffffff !important;
@@ -3407,7 +3417,7 @@ ul {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
     .mobile-nav-toggle {
         display: block;
     }
@@ -3857,7 +3867,7 @@ ul {
     width: 100%;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
     .header-controls {
         display: none !important;
     }
@@ -3966,3 +3976,884 @@ ul {
 }
 
 
+
+/* ==========================================================================
+   BLOG PAGE COMPONENTS
+   ========================================================================== */
+
+/* Blog Featured Post Section */
+.blog-featured-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+}
+
+.blog-featured-card {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.featured-image-container {
+    position: relative;
+    height: 100%;
+    min-height: 400px;
+}
+
+.featured-blog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background-color: var(--accent-color);
+    color: var(--text-on-primary);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+[dir="rtl"] .featured-badge {
+    left: auto;
+    right: 24px;
+}
+
+.featured-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.blog-category {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.blog-category.safety {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+}
+
+.blog-category.maintenance {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+}
+
+.blog-category.technology {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+}
+
+.blog-date, .blog-read-time {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.featured-content h2 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 850;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.featured-content p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+/* Blog Posts Grid */
+.blog-posts-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+    margin-bottom: 50px;
+}
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+}
+
+.blog-card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.blog-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.blog-card:hover .blog-card-image img {
+    transform: scale(1.05);
+}
+
+.blog-category-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+[dir="rtl"] .blog-category-badge {
+    right: auto;
+    left: 16px;
+}
+
+.blog-category-badge.maintenance {
+    background-color: rgba(37, 99, 235, 0.85);
+    color: #ffffff;
+}
+
+.blog-category-badge.technology {
+    background-color: rgba(16, 185, 129, 0.85);
+    color: #ffffff;
+}
+
+.blog-category-badge.guide {
+    background-color: rgba(245, 158, 11, 0.85);
+    color: #ffffff;
+}
+
+.blog-category-badge.seasonal {
+    background-color: rgba(139, 92, 246, 0.85);
+    color: #ffffff;
+}
+
+.blog-category-badge.tips {
+    background-color: rgba(236, 72, 153, 0.85);
+    color: #ffffff;
+}
+
+.blog-category-badge.warranty {
+    background-color: rgba(20, 184, 166, 0.85);
+    color: #ffffff;
+}
+
+.blog-card-content {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.blog-meta-small {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.blog-meta-small span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.blog-card-content h3 {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.blog-card-content p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.blog-read-link {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-smooth);
+}
+
+.blog-read-link:hover {
+    gap: 12px;
+    color: var(--primary-hover);
+}
+
+.blog-read-link i {
+    font-size: 12px;
+}
+
+/* Load More Button */
+.blog-load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Newsletter Signup Section */
+.blog-newsletter-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px;
+}
+
+.newsletter-card {
+    padding: 50px 40px;
+    text-align: center;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.newsletter-icon {
+    font-size: 60px;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+}
+
+.newsletter-content h3 {
+    font-size: 28px;
+    font-weight: 850;
+    margin-bottom: 12px;
+}
+
+.newsletter-content p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.newsletter-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.newsletter-input-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.newsletter-input-group .form-input {
+    flex-grow: 1;
+}
+
+.newsletter-privacy {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
+/* Blog Categories Section */
+.blog-categories-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+}
+
+.categories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.category-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+.category-chip:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.category-chip i {
+    font-size: 14px;
+}
+
+/* Blog Responsive Design */
+@media (max-width: 992px) {
+    .blog-featured-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-image-container {
+        min-height: 300px;
+    }
+    
+    .featured-content {
+        padding: 30px 24px;
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+    }
+    
+    .newsletter-card {
+        padding: 40px 24px;
+    }
+    
+    .newsletter-input-group {
+        flex-direction: column;
+    }
+    
+    .newsletter-input-group .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .blog-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .featured-content h2 {
+        font-size: 22px;
+    }
+    
+    .categories-grid {
+        justify-content: flex-start;
+    }
+}
+
+/* Active category chip state */
+.category-chip.active-chip {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-on-primary);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+}
+
+/* ==========================================================================
+   ACCORDION COMPONENT
+   ========================================================================== */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    border-radius: var(--border-radius-md) !important;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.accordion-trigger {
+    width: 100%;
+    background: none;
+    cursor: pointer;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: left;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition-smooth);
+}
+
+[dir="rtl"] .accordion-trigger {
+    text-align: right;
+}
+
+.accordion-trigger:hover {
+    color: var(--primary-color);
+    background-color: var(--primary-light);
+}
+
+.accordion-trigger[aria-expanded="true"] {
+    color: var(--primary-color);
+    border-bottom-color: var(--border-color);
+}
+
+.accordion-icon {
+    font-size: 13px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+    transform: rotate(180deg);
+    color: var(--primary-color);
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.35s ease;
+    padding: 0 28px;
+}
+
+.accordion-body.open {
+    max-height: 400px;
+    padding: 20px 28px 24px;
+}
+
+.accordion-body p {
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-size: 15px;
+}
+
+/* ==========================================================================
+   PRICING PAGE — ADD-ONS TABLE
+   ========================================================================== */
+.pricing-addons-section {
+    border-top: 1px solid var(--border-color);
+}
+
+.addons-table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--border-radius-md);
+}
+
+.addons-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 700px;
+}
+
+.addons-table thead tr {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.addons-table th {
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.addons-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+    color: var(--text-secondary);
+    vertical-align: middle;
+}
+
+.addons-table td:first-child {
+    color: var(--text-primary);
+}
+
+.addons-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.addons-table tbody tr:hover {
+    background-color: var(--primary-light);
+}
+
+.price-cell {
+    font-weight: 800;
+    color: var(--primary-color) !important;
+    white-space: nowrap;
+}
+
+.avail-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.avail-badge.green {
+    background-color: rgba(16, 185, 129, 0.12);
+    color: var(--success-color);
+}
+
+.avail-badge.blue {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+}
+
+.avail-badge.amber {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   PRICING PAGE — FLEET TIERS
+   ========================================================================== */
+.pricing-fleet-section {
+    border-top: 1px solid var(--border-color);
+}
+
+.fleet-tiers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.fleet-tier-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    transition: var(--transition-smooth);
+}
+
+.fleet-tier-row:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
+}
+
+[dir="rtl"] .fleet-tier-row:hover {
+    transform: translateX(-4px);
+}
+
+.fleet-tier-badge {
+    min-width: 90px;
+    text-align: center;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.fleet-tier-badge.bronze {
+    background-color: rgba(180, 120, 60, 0.12);
+    color: #b4783c;
+    border: 1px solid rgba(180, 120, 60, 0.25);
+}
+
+.fleet-tier-badge.silver {
+    background-color: rgba(148, 163, 184, 0.15);
+    color: #64748b;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.fleet-tier-badge.gold {
+    background-color: rgba(245, 158, 11, 0.12);
+    color: var(--accent-color);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.fleet-tier-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fleet-tier-info strong {
+    font-size: 15px;
+    color: var(--text-primary);
+    font-weight: 800;
+}
+
+.fleet-tier-info span {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   PRICING PAGE — COMPARISON TABLE
+   ========================================================================== */
+.pricing-comparison-section {
+    border-top: 1px solid var(--border-color);
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--border-radius-md);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    min-width: 580px;
+}
+
+.comparison-table th {
+    padding: 20px 16px;
+    font-weight: 800;
+    border-bottom: 2px solid var(--border-color);
+    position: relative;
+}
+
+.comparison-table th:first-child {
+    text-align: left;
+}
+
+[dir="rtl"] .comparison-table th:first-child {
+    text-align: right;
+}
+
+.comparison-table th.col-recommended {
+    background-color: var(--primary-light);
+    border-left: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+}
+
+.comparison-table td.col-recommended {
+    background-color: rgba(37, 99, 235, 0.04);
+    border-left: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+}
+
+.recommended-tag {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.col-label {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.col-label span {
+    display: block;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-top: 4px;
+}
+
+.comparison-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.comparison-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding-left: 24px;
+}
+
+[dir="rtl"] .comparison-table td:first-child {
+    text-align: right;
+    padding-left: 16px;
+    padding-right: 24px;
+}
+
+.comparison-table .fa-check { font-size: 16px; }
+.comparison-table .fa-xmark { font-size: 16px; }
+.text-red { color: var(--danger-color); }
+
+.comparison-table tr.cta-row td {
+    padding: 20px 16px;
+    border-bottom: none;
+}
+
+.comparison-table tbody tr:hover td {
+    background-color: var(--primary-light);
+}
+
+.comparison-table tbody tr:hover td.col-recommended {
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+/* ==========================================================================
+   PRICING PAGE — FAQ SECTION
+   ========================================================================== */
+.pricing-faq-section {
+    border-top: 1px solid var(--border-color);
+    padding-bottom: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE — PRICING NEW SECTIONS
+   ========================================================================== */
+@media (max-width: 992px) {
+    .fleet-tier-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .fleet-tier-badge {
+        min-width: unset;
+    }
+}
+
+@media (max-width: 768px) {
+    .addons-table th,
+    .addons-table td {
+        padding: 12px 14px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    .col-label span {
+        font-size: 18px;
+    }
+}
+
+/* ==========================================================================
+   DASHBOARD CONTROLS — RESPONSIVE OVERLAP FIX (≤ 1280px)
+   At widths where the absolute-positioned controls bar overlaps panel headers,
+   convert it to a sticky top bar that flows naturally above the panel content.
+   ========================================================================== */
+@media (max-width: 1280px) {
+    .dashboard-panels-container {
+        padding-top: 0;
+    }
+
+    .dashboard-controls {
+        position: sticky;
+        top: 0;
+        right: auto;
+        width: 100%;
+        background-color: var(--bg-card);
+        border-bottom: 1px solid var(--border-color);
+        padding: 14px 24px;
+        margin-bottom: 24px;
+        border-radius: 0;
+        justify-content: flex-end;
+        z-index: 50;
+        box-shadow: var(--shadow-sm);
+    }
+
+    [dir="rtl"] .dashboard-controls {
+        left: auto;
+        right: auto;
+        justify-content: flex-end;
+    }
+
+    .dashboard-user-card {
+        flex: 1;
+        min-width: 0;
+        max-width: 340px;
+    }
+
+    /* Ensure buttons stay their correct colour in this context */
+    .dashboard-controls button.theme-toggle,
+    .dashboard-controls button.dir-toggle-container {
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+        box-shadow: none;
+    }
+
+    .dashboard-controls button.theme-toggle:hover,
+    .dashboard-controls button.dir-toggle-container:hover {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+    }
+
+    /* Panel content no longer needs to account for the absolute offset */
+    .dashboard-panel.active {
+        padding-top: 0;
+    }
+}

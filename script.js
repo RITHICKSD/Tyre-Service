@@ -56,6 +56,8 @@ window.addEventListener('DOMContentLoaded', () => {
     initAdminDashboard();
     initDateLimits();
     initActiveServiceFootprint();
+    initBlogPage();
+    initAccordions();
 
     // Check for target view in query params
     const urlParams = new URLSearchParams(window.location.search);
@@ -1185,4 +1187,151 @@ function initActiveServiceFootprint() {
             }, 600);
         });
     }
+}
+
+
+// ==========================================================================
+// BLOG PAGE INTERACTIONS
+// ==========================================================================
+function initBlogPage() {
+    // Newsletter signup form feedback
+    const newsletterForm = document.getElementById('newsletter-signup-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+            const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Subscribing...';
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Subscribed!';
+                submitBtn.style.backgroundColor = 'var(--success-color)';
+                emailInput.value = '';
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.backgroundColor = '';
+                }, 3000);
+            }, 1200);
+        });
+    }
+
+    // Load More button — append additional placeholder cards
+    const loadMoreBtn = document.getElementById('load-more-posts');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', () => {
+            const grid = document.querySelector('.blog-grid');
+            if (!grid) return;
+
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Loading...';
+
+            const extraPosts = [
+                {
+                    img: 'm3.jpg',
+                    alt: 'Fleet tire maintenance',
+                    badge: 'guide',
+                    badgeLabel: 'Guide',
+                    date: 'Jan 30, 2026',
+                    time: '5 min',
+                    title: 'Fleet Tire Maintenance: A Complete Manager\'s Checklist',
+                    desc: 'Keeping a commercial fleet roadworthy requires a structured maintenance schedule. Follow this checklist to minimize downtime and maximize tread life.'
+                },
+                {
+                    img: 'm4.jpg',
+                    alt: 'Wheel alignment vs balancing',
+                    badge: 'tips',
+                    badgeLabel: 'Tips',
+                    date: 'Jan 22, 2026',
+                    time: '6 min',
+                    title: 'Wheel Alignment vs Wheel Balancing: What\'s the Difference?',
+                    desc: 'These two services are often confused but address completely different problems. Here\'s how to tell which one your vehicle actually needs.'
+                },
+                {
+                    img: 'm5.jpg',
+                    alt: 'EV tire service guide',
+                    badge: 'technology',
+                    badgeLabel: 'Technology',
+                    date: 'Jan 15, 2026',
+                    time: '7 min',
+                    title: 'Why Electric Vehicles Need More Frequent Tire Rotation',
+                    desc: 'The instant torque of EVs creates unique tire wear patterns. Learn how our mobile service adapts to the specific needs of Tesla, Rivian, and other EVs.'
+                }
+            ];
+
+            setTimeout(() => {
+                extraPosts.forEach(post => {
+                    const article = document.createElement('article');
+                    article.className = 'blog-card glass';
+                    article.innerHTML = `
+                        <div class="blog-card-image">
+                            <img src="${post.img}" alt="${post.alt}">
+                            <span class="blog-category-badge ${post.badge}">${post.badgeLabel}</span>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta-small">
+                                <span><i class="fa-solid fa-calendar"></i> ${post.date}</span>
+                                <span><i class="fa-solid fa-clock"></i> ${post.time}</span>
+                            </div>
+                            <h3>${post.title}</h3>
+                            <p>${post.desc}</p>
+                            <a href="#" class="blog-read-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>`;
+                    grid.appendChild(article);
+                });
+
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Load More Articles';
+                // Hide button after loading once since it's a demo
+                loadMoreBtn.style.display = 'none';
+            }, 1000);
+        });
+    }
+
+    // Category chip active state
+    const chips = document.querySelectorAll('.category-chip');
+    chips.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+            e.preventDefault();
+            chips.forEach(c => c.classList.remove('active-chip'));
+            chip.classList.add('active-chip');
+        });
+    });
+}
+
+// ==========================================================================
+// ACCORDION COMPONENT
+// ==========================================================================
+function initAccordions() {
+    // Select all accordion triggers across every accordion on the page
+    const triggers = document.querySelectorAll('.accordion-trigger');
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+            const body = trigger.nextElementSibling;
+            const accordion = trigger.closest('.accordion');
+
+            // Close all other items in the same accordion (one-open-at-a-time)
+            if (accordion) {
+                accordion.querySelectorAll('.accordion-trigger').forEach(otherTrigger => {
+                    if (otherTrigger !== trigger) {
+                        otherTrigger.setAttribute('aria-expanded', 'false');
+                        const otherBody = otherTrigger.nextElementSibling;
+                        if (otherBody) otherBody.classList.remove('open');
+                    }
+                });
+            }
+
+            // Toggle the clicked item
+            if (isOpen) {
+                trigger.setAttribute('aria-expanded', 'false');
+                body.classList.remove('open');
+            } else {
+                trigger.setAttribute('aria-expanded', 'true');
+                body.classList.add('open');
+            }
+        });
+    });
 }
